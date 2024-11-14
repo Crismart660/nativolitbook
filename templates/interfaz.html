@@ -1,16 +1,114 @@
-<!-- interfaz.html -->
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interfaz</title>
+  <title>home</title>
+
+  <!-- font awesome cdn link  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+  <!-- custom css file link  -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
 </head>
 
 <body>
-  <h1>Bienvenido a la interfaz</h1>
-  <p>¡Has iniciado sesión con éxito!</p>
+
+  <header class="header">
+
+    <section class="flex">
+
+
+
+      <form action="search.html" method="post" class="search-form">
+        <input type="text" name="search_box" required placeholder="search courses..." maxlength="1000">
+        <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="user-btn" class="fas fa-user"></div>
+        <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+        <!-- Contenedor para mostrar la imagen seleccionada -->
+
+        <div class="Selector_imagenes">
+          <img id="profilePic" src="" style="left: -50px;">
+        </div>
+
+
+
+        <br><br><!---cambiar de linea-->
+
+        <!-- Input para seleccionar la imagen -->
+
+
+
+
+        <input type="file" id="fileInput" class="hidden-input" accept="image/*">
+        <label for="fileInput" class="custom-button">Elegir imagen</label>
+
+      </div>
+      </div>
+
+    </section>
+
+  </header>
+
+  <div class="side-bar">
+
+    <div id="close-btn">
+      <i class="fas fa-times"></i>
+    </div>
+
+    <div class="profile">
+      <img src="{{ url_for('static', filename='images/lenguaje.png') }}" class="image" />
+    </div>
+
+    <nav class="navbar">
+      <a href="{{ url_for('interfaz') }}"><i class="fas fa-home"></i><span>Inicio</span></a>
+      <a href="{{ url_for('courses') }}"><i class="fas fa-graduation-cap"></i><span>Biblioteca</span></a>
+      <a href="{{ url_for('gamepad') }}"><i class="fas fa-gamepad"></i><span>GamePad</span></a>
+      <a href="{{ url_for('libros') }}"><i class="fas fa-book"></i><span>Libros</span></a>
+    </nav>
+
+  </div>
+
+  <section class="home-grid">
+
+    <div class="content">
+      <h3>NativoLitBook <h2>libros</h2>
+      </h3>
+      <h4> Ofrecemos una variedad de libros llenos de aventuras, ideales para aprender nuevas palabras en contexto, y
+        audiolibros narrados por hablantes nativos, perfectos para perfeccionar tu comprensión auditiva. Nuestro enfoque
+        está en hacer que el aprendizaje del inglés sea agradable y efectivo, con material interactivo que fomenta la
+        práctica continua de manera divertida.</h4>
+      <a href="{{ url_for('courses') }}" class="btn">Ir Biblioteca</a>
+    </div>
+    <div class="image">
+      <img src="{{ url_for('static', filename='images/personajelibro.png') }}" />
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- custom js file link  -->
+    <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
+
 </body>
 
 </html>

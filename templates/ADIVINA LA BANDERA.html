@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es"><!---Define que el idioma principla del contenido del documento es "español"-->
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><!---Esta etiqueta nos permite evitar problemas de compatibiliad de nuestra pagina usando la ultima version "edge" de nuestro navegador"-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!----la etique "viewport" define el comportamiento de la ventana de la visualizacion en diferentes contenidos
+    
+    el contenido de "viweport" es: content="width=device-width, esta parte asegura que el ancho de la ventana se ajuste al ancho del dispositivo porque bueno ya sabes una tablet tiene mas grande la pantalla que el celular
+    
+    luego tenemos el initial-scale=1.0" el contenido de nuestra pagina web se mostrarar al 100 por ciento asi el usuario no tendra que estar haciendo zoom para entender el contenido  -->
+
+<link rel="stylesheet" href="estilo.css"><!---aqui llamamos en el index la carpeta css/estilo.css para que cuando empezemos a modificar con css nos guarde los cambios-->
+<title>GUESS THE FLAG</title>
+</head>
+
+
+<body>
+
+    
+    <h1>GUESS THE FLAG</h1>
+    <!-----Pantalla inicial-->
+    <div id="pantalla-inicial">
+
+        
+        
+        <!---Un div sirve para agrupar un gran cantidad de contenido para luego tratarlo como una unidad lo cual luego nos puede ser de mucha utilidad si lo queremos editar con CSS o con JAVASCRIPT llamando a su nombre "id"--->
+
+        <p>¿What country does the flag belong to?</p>
+        <button class="btn" onclick="comenzarJuego()">Begin a game</button>
+ 
+    </div>
+   
+
+<!----Pantalla juego-->
+
+    <div class="pantalla-juego" id="pantalla-juego">
+
+
+        <img src="img/ad.svg"  alt="" id="imgBandera">
+
+    
+        
+
+         <!--Alt es un mombre alternativo para nuestras imagenes!>-->
+        
+        <!--Aqui usamos una imagen tipo "svg" Es un tipo de imagen que no pierde calidad cuando modificamos su tamaño ya que en vez de estar hecha con pixeles esta hecha con lineas y formas-->
+        
+        <div class="opciones">
+    
+            <div class="opcion" id="op0" onclick="comprobarRespuesta(0)">
+                <div class="letra" id="l0">A</div>
+                <div class="nombre" id="n0">OPCION A</div>
+            </div>
+            <div class="opcion" id="op1" onclick="comprobarRespuesta(1)">
+                <div class="letra" id="l1">B</div>
+                <div class="nombre" id="n1">OPCION B</div>
+            </div>
+            <div class="opcion" id="op2" onclick="comprobarRespuesta(2)">
+                <div class="letra" id="l2">C</div>
+                <div class="nombre" id="n2">OPCION C</div>
+            </div>
+        </div>
+    </div>
+         <!----pantalla final-->
+         <div id="pantalla-final">
+            <h2>:CORRECT <span id="numCorrectas"></span></h2>
+            <h2>:INCORRECT<span id="numIncorrectas"></span></h2>
+            <!---SPAN EN ESTE CASO NOS PERMITE SI EN ALGUN MOMENTO DESEAMOS MODIFICAR EL 3 Y EL 2 SIN ALTERAR EL TEXTO (CORRECTAS Y INCORRECTAS)-->
+            <button class="btn" onclick="volverAlInicio()">Return to the beginning </button>
+        </div>
+
+        
+<!-----
+
+        <div id="pantalla-inicial">
+            <h6>Elige una posición</h6>
+            <button onclick="elegirPosicion(0)">Posición 0</button>
+            <button onclick="elegirPosicion(1)">Posición 1</button>
+            <button onclick="elegirPosicion(2)">Posición 2</button>
+   
+        </div>
+---->
+        <!-- Elegir posicion -->
+<!--
+    
+        <div id="pantalla-juego" style="display: none;"
+            <img id="imgBandera" src="" alt="Bandera">
+            <div id="opciones">
+                <button id="n0" onclick="comprobarRespuesta(0)"></button>
+                <button id="n1" onclick="comprobarRespuesta(1)"></button>
+                <button id="n2" onclick="comprobarRespuesta(2)"></button>
+            </div>
+        </div>     
+---->
+
+
+ <!--select sirve para crear un menu desplegable con una lista de elementos---->
+<!----onchange es un atributo que se activa cada vez que el usuario selecciona una posicion diferente ("elegirPosicion") en el select-->
+
+<div>
+
+    <select id="selectPosicion" onchange="elegirPosicion()">
+        
+    </select>
+    
+    </div>
+
+    <div>
+        <a href="home.html" class="btn" style="top: 15px;   left: 1250px; width: 100px; position: absolute;">INICIO</a>
+    </div>
+
+    
+
+<footer class="footer">
+<div>
+   &copy; copyright By <span>@NativoLitBook</span> 2024 | all rights reserved!
+</div>
+</footer>
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+
+<script src="cuestionario.js"></script>
+</body>
+</html>

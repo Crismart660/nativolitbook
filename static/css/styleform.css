@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 body {
@@ -10,7 +10,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-size: cover;
+  background-image: url("../assets/fondo.jpg"); /* Ruta a la imagen */
 }
 
 .container-form {

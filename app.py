@@ -35,6 +35,22 @@ def index():
 def interfaz():
     return render_template('interfaz.html')
 
+#Rutas que contiene la interfaz.html
+
+
+@app.route('/courses')
+def courses():
+    return render_template('courses.html')
+
+@app.route('/gamepad')
+def gamepad():
+    return render_template('ADIVINA LA BANDERA.html')
+
+@app.route('/libros')
+def libros():
+    return render_template('libroscrud.html')
+
+
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -52,7 +68,7 @@ def register():
 
     # Validar formato del correo electrónico
     if not email_regex(user_email):
-        return jsonify({"error": "El correo electrónico no es válido."}), 400
+        return jsonify({"error": "El correo electrónico debe contener @gmail.com."}), 400
 
     # Validar formato de la contraseña
     if not password_regex(user_password):

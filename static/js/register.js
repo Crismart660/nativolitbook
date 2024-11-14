@@ -34,7 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   inputEmail.addEventListener("input", () => {
-    validarCampo(emailRegex, inputEmail, "El correo electrónico no es válido.");
+    validarCampo(
+      emailRegex,
+      inputEmail,
+      "El correo electrónico debe contener @gmail.com."
+    );
   });
 
   inputPass.addEventListener("input", () => {
