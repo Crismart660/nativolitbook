@@ -56,7 +56,7 @@
           </div>
           <input type="submit" value="Registrarse">
           <!-- Aquí se mostrará el mensaje de éxito o error global -->
-          <div id="globalMessage" style="display:none;"></div>
+          <div id="globalMessageRegister" style="display:none;"></div> <!-- Para el registro -->
         </form>
       </div>
     </div>
@@ -85,16 +85,18 @@
               <i class='bx bx-envelope'></i>
               <input type="email" placeholder="Correo Electrónico" name="userEmail" required>
             </label>
+            <div class="alertaError" id="userEmailError" style="display:none;"></div> <!-- Error mensaje para email -->
           </div>
           <div>
             <label>
               <i class='bx bx-lock-alt'></i>
               <input type="password" placeholder="Contraseña" name="userPassword" required>
             </label>
+            <div class="alertaError" id="userPasswordError" style="display:none;"></div>
+            <!-- Error mensaje para contraseña -->
           </div>
           <input type="submit" value="Iniciar Sesión">
-          <div class="alerta-error" style="display: none;">Todos los campos son obligatorios</div>
-          <div class="alerta-exito" style="display: none;">Iniciaste sesión correctamente</div>
+          <div id="globalMessageLogin" style="display:none;"></div> <!-- Para mostrar mensajes globales del login -->
         </form>
       </div>
     </div>
@@ -102,6 +104,7 @@
 
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   <script src="{{ url_for('static', filename='js/register.js') }}" type="module"></script>
+  <script src="{{ url_for('static', filename='js/login.js') }}" type="module"></script>
 </body>
 
 </html>

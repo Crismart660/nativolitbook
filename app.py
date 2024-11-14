@@ -12,12 +12,12 @@ def get_db_connection():
     try:
         connection = mariadb.connect(
             host='localhost',
-            user='root',
+            user='root', 
             password='',  # Cambiar por tu contraseña
             database='usuarios',
             port=3306
         )
-        return connection
+        return connection 
     except Error as e:
         print(f"Error de conexión: {e}")  
         return None
@@ -30,6 +30,11 @@ def serve_js(filename):
 @app.route('/')
 def index():
     return render_template('form.html')
+
+@app.route('/interfaz.html')
+def interfaz():
+    return render_template('interfaz.html')
+
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -87,7 +92,7 @@ def login():
 
     # Verificar si el correo existe
     try:
-        connection = get_db_connection()
+        connection = get_db_connection() 
         if connection:
             cursor = connection.cursor()
             cursor.execute("SELECT userPassword FROM usuarios WHERE userEmail = ?", (user_email,))
@@ -125,9 +130,9 @@ def email_exists(user_email):
             connection.close()
             return result is not None
         else:
-            return False
+            return False 
     except Error as e:
-        print(f"Error al verificar el correo: {e}")
+        print(f"Error al verificar el correo: {e}")  
         return False
 
 if __name__ == '__main__':

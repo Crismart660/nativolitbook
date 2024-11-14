@@ -51,19 +51,19 @@ function validarCampo(regularExpresion, campo, mensaje) {
   const errorDiv = document.querySelector(`#${campo.name}Error`);
 
   if (esValido) {
-    errorDiv.style.display = "none"; // Ocultar mensaje de error
+    errorDiv.style.display = "none";
     estadoValidacionCampos[campo.name] = true;
     campo.parentElement.classList.remove("error");
   } else {
     estadoValidacionCampos[campo.name] = false;
     campo.parentElement.classList.add("error");
-    errorDiv.textContent = mensaje; // Mostrar el mensaje de error
-    errorDiv.style.display = "block"; // Hacer visible el mensaje de error
+    errorDiv.textContent = mensaje;
+    errorDiv.style.display = "block";
   }
 }
 
 function enviarFormulario(form) {
-  const globalMessage = document.querySelector("#globalMessage");
+  const globalMessage = document.querySelector("#globalMessageRegister"); // Cambio aquí
 
   if (
     estadoValidacionCampos.userName &&
@@ -76,7 +76,10 @@ function enviarFormulario(form) {
       method: "POST",
       body: formData,
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) throw new Error("Error en la solicitud");
+        return response.json();
+      })
       .then((data) => {
         globalMessage.textContent = data.success
           ? "Te registraste correctamente"
@@ -85,12 +88,17 @@ function enviarFormulario(form) {
 
         if (data.success) {
           globalMessage.className = "alerta alerta-exito show";
+          form.reset();
+          estadoValidacionCampos.userName =
+            estadoValidacionCampos.userEmail =
+            estadoValidacionCampos.userPassword =
+              false;
         } else {
           globalMessage.className = "alerta alerta-error show";
         }
 
         setTimeout(() => {
-          globalMessage.style.display = "none"; // Ocultar el mensaje después de 3 segundos
+          globalMessage.style.display = "none";
           globalMessage.classList.remove("show");
         }, 3000);
       })
