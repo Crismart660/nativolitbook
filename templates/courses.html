@@ -1,213 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>courses</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>courses</title>
 
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+  <!-- font awesome cdn link  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+  <!-- custom css file link  -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
+
 <body>
 
-<header class="header">
-   
-   <section class="flex">
+  <header class="header">
 
-      
+    <section class="flex">
+
+
 
       <form action="search.html" method="post" class="search-form">
-         <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
-         <button type="submit" class="fas fa-search"></button>
+        <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+        <button type="submit" class="fas fa-search"></button>
       </form>
 
       <div class="icons">
-         <div id="menu-btn" class="fas fa-bars"></div>
-         <div id="search-btn" class="fas fa-search"></div>
-         <div id="user-btn" class="fas fa-user"></div>
-         <div id="toggle-btn" class="fas fa-sun"></div>
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="user-btn" class="fas fa-user"></div>
+        <div id="toggle-btn" class="fas fa-sun"></div>
       </div>
 
       <div class="profile">
-         <div class="Selector_imagenes">
-            <img id="profilePic" src="" style= "left: -50px;">
-         </div>
-         
-         
-         
-         <br><br><!---cambiar de linea-->
-         
-         <!-- Input para seleccionar la imagen -->
-         
-         
-         
-         
-         <input type="file" id="fileInput" class="hidden-input" accept="image/*">
-         <label for="fileInput" class="custom-button">Elegir imagen</label>
-                    
-            
-         </div>
+        <div class="Selector_imagenes">
+          <img id="profilePic" src="" style="left: -50px;">
+        </div>
+
+
+
+        <br><br><!---cambiar de linea-->
+
+        <!-- Input para seleccionar la imagen -->
+
+
+
+
+        <input type="file" id="fileInput" class="hidden-input" accept="image/*">
+        <label for="fileInput" class="custom-button">Elegir imagen</label>
+
+
+      </div>
       </div>
 
-   </section>
+    </section>
 
-</header>   
+  </header>
 
-<div class="side-bar">
+  <div class="side-bar">
 
-   <div id="close-btn">
+    <div id="close-btn">
       <i class="fas fa-times"></i>
-   </div>
+    </div>
 
-   <div class="profile">
-      <img src="images/lenguaje.png" class="image" alt="">
-   </div>
+    <div class="profile">
+      <img src="{{ url_for('static', filename='images/lenguaje.png') }}" class="image" />
+    </div>
 
-   <nav class="navbar">
-      <a href="home.html"><i class="fas fa-home"></i><span>Inicio</span></a>
-      <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>Biblioteca</span></a>
-      <a href="ADIVINA LA BANDERA.html"><i class="fas fa-gamepad"></i><span>GamePad</span></a>
-      <a href="libroscrud.html"><i class="fas fa-book"></i><span>Libros</span></a>
-   </nav>
-
-
-</div>
-
+    <nav class="navbar">
+      <a href="{{ url_for('interfaz_bp.interfaz') }}"><i class="fas fa-home"></i><span>Inicio</span></a>
+      <a href="{{ url_for('interfaz_bp.courses') }}"><i class="fas fa-graduation-cap"></i><span>Biblioteca</span></a>
+      <a href="{{ url_for('interfaz_bp.gamepad') }}"><i class="fas fa-gamepad"></i><span>GamePad</span></a>
+      <a href="{{ url_for('interfaz_bp.libros') }}"><i class="fas fa-book"></i><span>Libros</span></a>
+      <div class="contenedor-boton"><a href="courses.html" class="botonito">Cerrar Sesión</a>
+      </div>
+    </nav>
 
 
-<section class="courses">
+  </div>
 
-   <h1 class="heading">Cuentos Infantiles</h1>
 
-   <div class="box-container">
+
+  <section class="courses">
+
+    <h1 class="heading">Cuentos Infantiles</h1>
+
+    <div class="box-container">
 
       <div class="box">
-         <div class="tutor">
-            <div class="info">
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/risitosdeoro.jpg" alt="risitosdeoro" style="width: 180px; height: 180px;">
-            <span>Español/Ingles</span>
-         </div>
-         <h3 class="title">Risitos De Oro</h3>
-         <a href="playlist.html" class="inline-btn">Leer Libro</a>
+        <div class="tutor">
+          <div class="info">
+          </div>
+        </div>
+        <div class="thumb">
+          <img src="{{ url_for('static', filename='images/risitosdeoro.jpg') }}" alt="risitosdeoro"
+            style="width: 180px; height: 180px;">
+          <span>Español/Ingles</span>
+        </div>
+        <h3 class="title">Risitos De Oro</h3>
+        <a href=" {{ url_for ('interfaz_bp.playlist') }}" class="inline-btn">Leer Libro</a>
       </div>
 
       <div class="box">
-         <div class="tutor">
-            <div class="info">
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/hanselygretterl.jpg" alt="hanselygrettel" style="width: 180px; height: 180px;">
-            <span>Español/Ingles</span>
-         </div>
-         <h3 class="title">Hansel y Gretel</h3>
-         <a href="hanselygretel.html" class="inline-btn">Leer Libro</a>
+        <div class="tutor">
+          <div class="info">
+          </div>
+        </div>
+        <div class="thumb">
+          <img src="{{ url_for('static', filename='images/hanselygretterl.jpg') }}" alt="hanselygrettel"
+            style="width: 180px; height: 180px;">
+
+          <span>Español/Ingles</span>
+        </div>
+        <h3 class="title">Hansel y Gretel</h3>
+        <a href="{{ url_for ('interfaz_bp.hanselygretel') }}" class="inline-btn">Leer Libro</a>
       </div>
 
       <div class="box">
-         <div class="tutor">
-            <div class="info">
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/caperucitaroja.jpg" alt="caperucitaroja" style="width: 180px; height: 180px;">
-            <span>Español/Ingles</span>
-         </div>
-         <h3 class="title">Caperucita Roja</h3>
-         <a href="caperucita.html" class="inline-btn">Leer Libro</a>
-      </div>
-      
-      <div class="box">
-         <div class="tutor">
-            <div class="info">
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/elprincipe.jpg" alt="elprincipe" style="width: 180px; height: 180px;">
-            <span>Español/Ingles</span>
-         </div>
-         <h3 class="title">Principe, Mendigo</h3>
-         <a href="principemendigo.html" class="inline-btn">Leer Libro</a>
+        <div class="tutor">
+          <div class="info">
+          </div>
+        </div>
+        <div class="thumb">
+          <img src="{{ url_for('static', filename='images/caperucitaroja.jpg') }}" alt="caperucitaroja"
+            style="width: 180px; height: 180px;">
+          <span>Español/Ingles</span>
+        </div>
+        <h3 class="title">Caperucita Roja</h3>
+        <a href="{{ url_for ('interfaz_bp.caperucita') }}" class="inline-btn">Leer Libro</a>
       </div>
 
       <div class="box">
-         <div class="tutor">
-            <div class="info">
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/gatoconbotas.jpg" alt="gatoconbotas" style="width: 180px; height: 180px;">
-            <span>Español/Ingles</span>
-         </div>
-         <h3 class="title">El Gato Con Botas</h3>
-         <a href="gatoconbotas.html" class="inline-btn">Leer Libro</a>
+        <div class="tutor">
+          <div class="info">
+          </div>
+        </div>
+        <div class="thumb">
+          <img src="{{ url_for('static', filename='images/elprincipe.jpg') }}" alt="elprincipe"
+            style="width: 180px; height: 180px;">
+          <span>Español/Ingles</span>
+        </div>
+        <h3 class="title">Principe, Mendigo</h3>
+        <a href="{{ url_for ('interfaz_bp.principemendigo') }}" class="inline-btn">Leer Libro</a>
       </div>
 
       <div class="box">
-         <div class="tutor">
-            <div class="info">
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/patitofeo.jpg" alt="patitofeo" style="width: 180px; height: 180px;">
-            <span>Español/Ingles</span>
-         </div>
-         <h3 class="title">El Patito Feo</h3>
-         <a href="patitofeo.html" class="inline-btn">Leer Libro</a>
+        <div class="tutor">
+          <div class="info">
+          </div>
+        </div>
+        <div class="thumb">
+          <img src="{{ url_for('static', filename='images/gatoconbotas.jpg') }}" alt="gatoconbotas"
+            style="width: 180px; height: 180px;">
+
+          <span>Español/Ingles</span>
+        </div>
+        <h3 class="title">El Gato Con Botas</h3>
+        <a href="{{url_for ('interfaz_bp.gatoconbotas') }}" class="inline-btn">Leer Libro</a>
       </div>
 
       <div class="box">
-         <div class="tutor">
-            <div class="info">
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/los3cerditos.jpg" alt="cerditos" style="width: 180px; height: 180px;">
-            <span>Español/Ingles</span>
-         </div>
-         <h3 class="title">Los 3 Cerditos</h3>
-         <a href="lostrescerditos.html" class="inline-btn">Leer Libro</a>
+        <div class="tutor">
+          <div class="info">
+          </div>
+        </div>
+        <div class="thumb">
+          <img src="{{ url_for('static', filename='images/patitofeo.jpg') }}" alt="patitofeo"
+            style="width: 180px; height: 180px;">
+          <span>Español/Ingles</span>
+        </div>
+        <h3 class="title">El Patito Feo</h3>
+        <a href="{{ url_for('interfaz_bp.patitofeo') }}" class="inline-btn">Leer Libro</a>
       </div>
 
       <div class="box">
-         <div class="tutor">
-            <div class="info">
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/blancanieves.jpg" alt="blancanieves" style="width: 180px; height: 180px;">
-            <span>Español/Ingles</span>
-         </div>
-         <h3 class="title">Blanca Nieves</h3>
-         <a href="blancanieves.html" class="inline-btn">Leer Libro</a>
+        <div class="tutor">
+          <div class="info">
+          </div>
+        </div>
+        <div class="thumb">
+          <img src="{{ url_for('static', filename='images/los3cerditos.jpg') }}" alt="cerditos"
+            style="width: 180px; height: 180px;">
+          <span>Español/Ingles</span>
+        </div>
+        <h3 class="title">Los 3 Cerditos</h3>
+        <a href="{{ url_for('interfaz_bp.lostrescerditos') }}" class="inline-btn">Leer Libro</a>
+      </div>
+
+      <div class="box">
+        <div class="tutor">
+          <div class="info">
+          </div>
+        </div>
+        <div class="thumb">
+          <img src="{{ url_for('static', filename='images/blancanieves.jpg') }}" alt="blancanieves"
+            style="width: 180px; height: 180px;">
+          <span>Español/Ingles</span>
+        </div>
+        <h3 class="title">Blanca Nieves</h3>
+        <a href="{{ url_for('interfaz_bp.blancanieves') }}" class="inline-btn">Leer Libro</a>
       </div>
 
 
-   </div>
+    </div>
 
-</section>
-
-
+  </section>
 
 
-<footer class="footer">
-
-   &copy; copyright By <span>@NativoLitBook</span> 2024 | all rights reserved!
 
 
-</footer>
+  <footer class="footer">
 
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
+    &copy; copyright By <span>@NativoLitBook</span> 2024 | all rights reserved!
 
-   
+
+  </footer>
+
+  <!-- custom js file link  -->
+  <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
 </body>
+
 </html>

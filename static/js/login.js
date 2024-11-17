@@ -5,6 +5,9 @@ const inputEmail = document.querySelector(
 const inputPass = document.querySelector(
   '.form-login input[name="userPassword"]'
 );
+const checkboxAdmin = document.querySelector(
+  '.form-login input[name="isAdminLogin"]'
+); // El checkbox para administrador
 
 const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 const passwordRegex = /^.{4,12}$/;
@@ -44,14 +47,14 @@ function validarCampo(regularExpresion, campo, mensaje, errorId) {
   const errorDiv = document.querySelector(`#${errorId}`);
 
   if (esValido) {
-    errorDiv.style.display = "none"; // Ocultar mensaje de error
+    errorDiv.style.display = "none";
     estadoValidacionCampos[campo.name] = true;
     campo.parentElement.classList.remove("error");
   } else {
     estadoValidacionCampos[campo.name] = false;
     campo.parentElement.classList.add("error");
-    errorDiv.textContent = mensaje; // Mostrar el mensaje de error
-    errorDiv.style.display = "block"; // Hacer visible el mensaje de error
+    errorDiv.textContent = mensaje;
+    errorDiv.style.display = "block";
   }
 }
 
@@ -60,8 +63,15 @@ function enviarFormulario(form) {
 
   if (estadoValidacionCampos.userEmail && estadoValidacionCampos.userPassword) {
     const formData = new FormData(form);
+    const isAdminLogin = checkboxAdmin.checked; // Comprobar si el checkbox está marcado
 
-    fetch("/login", {
+    // Agregar el valor de isAdminLogin al FormData
+    formData.append("isAdminLogin", isAdminLogin);
+
+    // Determinar la URL según si es admin o usuario
+    const loginUrl = isAdminLogin ? "/admin/login" : "/login"; // Usamos la URL correspondiente
+
+    fetch(loginUrl, {
       method: "POST",
       body: formData,
     })
@@ -77,14 +87,21 @@ function enviarFormulario(form) {
 
         if (data.success) {
           globalMessage.className = "alerta alerta-exito show";
-          form.reset(); // Limpiar campos del formulario tras inicio de sesión exitoso
+          form.reset();
           estadoValidacionCampos.userEmail =
             estadoValidacionCampos.userPassword = false;
 
-          // Redirigir a la nueva página de interfaz
-          setTimeout(() => {
-            window.location.href = "/interfaz.html"; // Aquí se realiza la redirección
-          }, 2000); // Redirige después de 2 segundos para que el usuario vea el mensaje
+          // Verificar si 'redirect' está presente y es válido
+          if (data.redirect) {
+            console.log("Redirigiendo a: " + data.redirect);
+            setTimeout(() => {
+              window.location.href = data.redirect;
+            }, 2000);
+          } else {
+            console.log(
+              "No se recibió una URL de redirección en la respuesta."
+            );
+          }
         } else {
           globalMessage.className = "alerta alerta-error show";
         }

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>video playlist</title>
+
+  <!-- font awesome cdn link  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+  <!-- custom css file link  -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+  <header class="header">
+
+    <section class="flex">
+
+
+      <form action="search.html" method="post" class="search-form">
+        <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+        <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="user-btn" class="fas fa-user"></div>
+        <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+        <div class="Selector_imagenes">
+          <img id="profilePic" src="" style="left: -50px;">
+        </div>
+
+
+
+        <br><br><!---cambiar de linea-->
+
+        <!-- Input para seleccionar la imagen -->
+
+
+
+
+        <input type="file" id="fileInput" class="hidden-input" accept="image/*">
+        <label for="fileInput" class="custom-button">Elegir imagen</label>
+
+      </div>
+      </div>
+
+    </section>
+
+  </header>
+
+  <div class="side-bar">
+
+    <div id="close-btn">
+      <i class="fas fa-times"></i>
+    </div>
+
+    <div class="profile">
+      <img src="{{ url_for('static', filename='images/lenguaje.png') }}" class="image" />
+    </div>
+
+    <nav class="navbar">
+      <a href="{{ url_for('interfaz_bp.interfaz') }}"><i class="fas fa-home"></i><span>Inicio</span></a>
+      <a href="{{ url_for('interfaz_bp.courses') }}"><i class="fas fa-graduation-cap"></i><span>Biblioteca</span></a>
+      <a href="{{ url_for('interfaz_bp.gamepad') }}"><i class="fas fa-gamepad"></i><span>GamePad</span></a>
+      <a href="{{ url_for('interfaz_bp.libros') }}"><i class="fas fa-book"></i><span>Libros</span></a>
+    </nav>
+
+
+  </div>
+
+  <div class="playlist-details">
+
+
+    <!-- Contenedor para las dos páginas del libro -->
+    <div class="book">
+
+
+      <!-- Página izquierda (español) -->
+      <div class="page left">
+        <div class="row">
+          <div class="column">
+            <div class="thumb">
+              <img src="{{ url_for('static', filename='images/risitosavena.jpg') }}" alt="Imagen en español">
+            </div>
+
+            <div class="audio-container">
+              <audio id="audioPlayer">
+                <source src="{{ url_for('static', filename='audio/risitosvozhombreingles.mp3') }}" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+
+              <div class="controls">
+                <button id="playPauseBtn">▶️</button>
+                <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
+
+                <!-- Selector de voz -->
+                <select id="voiceSelect">
+                  <option value="{{ url_for('static', filename='audio/risitosvozhombreingles.mp3') }}">Boy</option>
+                  <option value="{{ url_for('static', filename='audio/risitosvozmujeringles.mp3') }}">Girl</option>
+                </select>
+
+
+                <!-- Selector de velocidad de reproducción -->
+                <select id="speedSelect">
+                  <option value="1">Normal</option>
+                  <option value="2">2x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="0.5">0.5x</option>
+                </select>
+              </div>
+            </div>
+
+
+
+
+          </div>
+          <div class="Page-text">
+            <div class="details">
+            </div>
+          </div>
+        </div>
+        <h3>Goldilocks and the Three Bears</h3>
+        <p id="texto">Once upon a time, there was a little girl named Goldilocks. One day, she decided to go for a walk
+          in the woods, and while walking, she came across a small house in the forest. No one was home, so Goldilocks
+          decided to go inside.
+
+          Inside the house, she found three bowls of porridge on the table. The first bowl was very large, the second
+          was medium-sized, and the third was small. Goldilocks tried the porridge from the first bowl, but it was too
+          hot. She tried the porridge from the second bowl, but it was too cold. Finally, she tried the porridge from
+          the third bowl, and it was just right, so she ate it all.
+
+          After eating, Goldilocks felt a little tired and decided to sit down. In the living room, there were three
+          chairs. The first chair was very large, the second was medium-sized, and the third was small. Goldilocks tried
+          the first chair, but it was too hard. She tried the second chair, but it was too soft. Finally, she tried the
+          third chair, and it was just right, but when she sat down, the chair broke.
+
+          Feeling a bit embarrassed, Goldilocks went upstairs and found three beds. The first bed was very large, the
+          second was medium-sized, and the third was small. Goldilocks tried the first bed, but it was too hard. She
+          tried the second bed, but it was too soft. Finally, she tried the third bed, and it was just right, so she
+          fell asleep.
+
+          Soon after, the three bears who lived in the house returned. The first bear to enter was Papa Bear, who
+          noticed that his porridge had been touched. Mama Bear also noticed, and Baby Bear exclaimed, "Someone's been
+          eating my porridge!" Then, they entered the living room, and Papa Bear saw that his chair had been sat in,
+          Mama Bear also noticed someone had been in her chair, and Baby Bear said, "Someone's broken my chair!"
+
+          Finally, the three bears went upstairs and found Goldilocks asleep in Baby Bear's bed. Baby Bear exclaimed,
+          "Someone's in my bed!" Goldilocks woke up scared and, upon seeing the three bears, ran out of the house as
+          fast as she could, without looking back.
+
+          From that day on, Goldilocks never entered anyone else's house again.</p>
+      </div>
+
+      <!-- Página derecha (inglés) -->
+      <div class="page right">
+        <div class="row">
+          <div class="column">
+            <div class="thumb">
+              <img src="{{ url_for('static', filename='images/descubierta.jpg') }}" alt="Imagen en español">
+            </div>
+
+
+            <div class="audio-container">
+              <audio id="audioPlayer2">
+                <source src="{{ url_for('static', filename='audio/risitosvozhombreespañol.mp3') }}" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+
+              <div class="controls">
+                <button id="playPauseBtn2">▶️</button>
+                <span id="currentTime2">00:00</span> / <span id="duration2">00:00</span>
+
+                <!-- Selector de voz -->
+                <select id="voiceSelect2">
+                  <option value="{{ url_for('static', filename='audio/risitosvozhombreespañol.mp3') }}">Hombre</option>
+                  <option value="{{ url_for('static', filename='audio/risitosvozmujerespañol.mp3') }}">Mujer</option>
+                </select>
+
+                <!-- Selector de velocidad de reproducción -->
+                <select id="speedSelect2">
+                  <option value="1">Normal</option>
+                  <option value="2">2x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="0.5">0.5x</option>
+                </select>
+              </div>
+            </div>
+
+            <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
+
+          </div>
+          <div class="column">
+            <div class="details">
+            </div>
+          </div>
+        </div>
+        <h3>Rizos de Oro y los Tres Osos</h3>
+        <p id="texto">Había una vez una niña llamada Rizos de Oro. Un día, decidió salir a pasear por el bosque y,
+          mientras caminaba, se encontró con una casa pequeña en medio del bosque. Nadie estaba en la casa, así que
+          Rizos de Oro decidió entrar.
+
+          Dentro de la casa, encontró tres tazas de avena en la mesa. La primera taza era muy grande, la segunda era
+          mediana y la tercera era pequeña. Rizos de Oro probó la avena de la primera taza, pero estaba demasiado
+          caliente. Probó la avena de la segunda taza, pero estaba demasiado fría. Finalmente, probó la avena de la
+          tercera taza, y estaba perfecta, así que se la comió toda.
+
+          Después de comer, Rizos de Oro se sintió un poco cansada y decidió sentarse. En la sala había tres sillas. La
+          primera silla era muy grande, la segunda era mediana y la tercera era pequeña. Rizos de Oro probó la primera
+          silla, pero estaba demasiado dura. Probó la segunda silla, pero estaba demasiado blanda. Finalmente, probó la
+          tercera silla, y estaba perfecta, pero cuando se sentó, la silla se rompió.
+
+          Cansada y un poco avergonzada, Rizos de Oro subió al piso de arriba y encontró tres camas. La primera cama era
+          muy grande, la segunda era mediana y la tercera era pequeña. Rizos de Oro probó la primera cama, pero estaba
+          demasiado dura. Probó la segunda cama, pero estaba demasiado blanda. Finalmente, probó la tercera cama, y
+          estaba perfecta, así que se quedó dormida.
+
+          Poco después, los tres osos que vivían en la casa volvieron. El primero en entrar fue el papá oso, que vio que
+          su taza de avena había sido tocada. La mamá osa también lo notó, y el pequeño oso exclamó: “¡Alguien ha comido
+          de mi avena!” Luego, entraron a la sala y el papá oso vio que su silla estaba ocupada, la mamá osa también
+          notó que alguien había estado en su silla, y el pequeño oso dijo: “¡Alguien ha roto mi silla!”
+
+          Finalmente, los tres osos subieron al piso de arriba y encontraron a Rizos de Oro durmiendo en la cama del
+          pequeño oso. El pequeño oso exclamó: “¡Alguien está en mi cama!” Rizos de Oro se despertó asustada y, al ver a
+          los tres osos, salió corriendo de la casa, sin mirar atrás.
+
+          Y desde entonces, nunca más Rizos de Oro volvió a entrar en una casa ajena.</p>
+      </div>
+
+      <div>
+        <a href="home.html" class="btn" style="top: 15px;   left: 1250px; width: 100px; position: absolute;">INICIO</a>
+      </div>
+
+    </div>
+
+    <!-- custom js file link  -->
+    <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
+
+</body>
+
+</html>

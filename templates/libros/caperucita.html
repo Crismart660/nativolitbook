@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>video playlist</title>
+
+  <!-- font awesome cdn link  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+  <!-- custom css file link  -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+  <header class="header">
+
+    <section class="flex">
+
+
+      <form action="search.html" method="post" class="search-form">
+        <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+        <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="user-btn" class="fas fa-user"></div>
+        <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+        <div class="Selector_imagenes">
+          <img id="profilePic" src="" style="left: -50px;">
+        </div>
+
+
+
+        <br><br><!---cambiar de linea-->
+
+        <!-- Input para seleccionar la imagen -->
+
+
+
+
+        <input type="file" id="fileInput" class="hidden-input" accept="image/*">
+        <label for="fileInput" class="custom-button">Elegir imagen</label>
+
+
+      </div>
+      </div>
+
+    </section>
+
+  </header>
+
+  <div class="side-bar">
+
+    <div id="close-btn">
+      <i class="fas fa-times"></i>
+    </div>
+
+    <div class="profile">
+      <img src="{{ url_for('static', filename='images/lenguaje.png') }}" class="image" />
+    </div>
+
+    <nav class="navbar">
+      <a href="{{ url_for('interfaz_bp.interfaz') }}"><i class="fas fa-home"></i><span>Inicio</span></a>
+      <a href="{{ url_for('interfaz_bp.courses') }}"><i class="fas fa-graduation-cap"></i><span>Biblioteca</span></a>
+      <a href="{{ url_for('interfaz_bp.gamepad') }}"><i class="fas fa-gamepad"></i><span>GamePad</span></a>
+      <a href="{{ url_for('interfaz_bp.libros') }}"><i class="fas fa-book"></i><span>Libros</span></a>
+    </nav>
+
+  </div>
+
+  <div class="playlist-details">
+
+
+    <!-- Contenedor para las dos páginas del libro -->
+    <div class="book">
+
+
+      <!-- Página izquierda (español) -->
+      <div class="page left">
+        <div class="row">
+          <div class="column">
+            <div class="thumb">
+              <img src="{{ url_for('static', filename='images/caperucitaconlamama.jpg') }}" alt="Imagen en español">
+            </div>
+
+            <div class="audio-container">
+              <audio id="audioPlayer">
+                <source src="{{ url_for('static', filename='audio/Caperucitavozhombreingles.mp3') }}" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+
+              <div class="controls">
+                <button id="playPauseBtn">▶️</button>
+                <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
+
+                <!-- Selector de voz -->
+                <select id="voiceSelect">
+                  <option value="{{ url_for('static', filename='audio/Caperucitavozhombreingles.mp3') }}">Boy</option>
+                  <option value="{{ url_for('static', filename='audio/Caperucitavozmujeringles.mp3') }}">Girl</option>
+                </select>
+
+                <!-- Selector de velocidad de reproducción -->
+                <select id="speedSelect">
+                  <option value="1">Normal</option>
+                  <option value="2">2x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="0.5">0.5x</option>
+                </select>
+              </div>
+            </div>
+
+
+
+
+          </div>
+          <div class="Page-text">
+            <div class="details">
+            </div>
+          </div>
+        </div>
+        <h3>Little Red Riding Hood</h3>
+        <p id="texto">Once upon a time, there was a very beautiful girl who lived in a village near the forest. Her
+          mother loved her dearly, and since she often visited her grandmother, she gave her a red hooded cloak that
+          suited her so well that everyone called her Little Red Riding Hood.
+
+          One day, her mother asked her to take a basket of food to her grandmother, who was ill and lived on the other
+          side of the forest. Before she left, her mother warned her:
+
+          —Little Red Riding Hood, don’t talk to strangers and stay on the path.
+
+          But as she walked through the forest, Little Red Riding Hood met the wolf. He asked where she was going, and
+          she, without thinking, replied:
+
+          —I’m going to my grandmother’s house to bring her this basket of food.
+
+          The wolf, who was very clever, thought of a plan. He told Little Red Riding Hood:
+
+          —Why don’t you take the longer path, which is more beautiful, while I take the shorter path?
+
+          Little Red Riding Hood, not knowing the danger, agreed and went down the longer path. Meanwhile, the wolf took
+          the shorter path, reached her grandmother’s house, and after tricking her, ate her up. Then, he dressed in her
+          clothes, got into bed, and waited for Little Red Riding Hood to arrive.
+
+          When Little Red Riding Hood arrived at her grandmother’s house, she noticed something strange:
+
+          —Grandmother, what big eyes you have! —All the better to see you with, my dear.
+
+          —Grandmother, what big ears you have! —All the better to hear you with, my dear.
+
+          —Grandmother, what big teeth you have! —All the better to eat you with, my dear!
+
+          And with a leap, the wolf jumped out of bed and tried to devour Little Red Riding Hood. But at that moment, a
+          hunter who was passing by heard the commotion, entered the house, and killed the wolf. Then, he rescued the
+          grandmother, who was alive, although quite frightened.
+
+          Little Red Riding Hood learned a valuable lesson: she never again spoke to strangers or disobeyed her mother.
+          From that day on, she lived happily and without any problems.</p>
+      </div>
+
+      <!-- Página derecha (inglés) -->
+      <div class="page right">
+        <div class="row">
+          <div class="column">
+            <div class="thumb">
+              <img src="{{ url_for('static', filename='images/loboycaperu.jpg') }}" alt="Imagen en español">
+
+            </div>
+
+
+            <div class="audio-container">
+              <audio id="audioPlayer2">
+                <source src="{{ url_for('static', filename='audio/Caperucitavozhombreespañol.mp3') }}"
+                  type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+
+              <div class="controls">
+                <button id="playPauseBtn2">▶️</button>
+                <span id="currentTime2">00:00</span> / <span id="duration2">00:00</span>
+
+                <!-- Selector de voz -->
+                <select id="voiceSelect2">
+                  <option value="{{ url_for('static', filename='audio/Caperucitavozhombreespañol.mp3') }}">Hombre
+                  </option>
+                  <option value="{{ url_for('static', filename='audio/Caperucitavozmujerespañol.mp3') }}">Mujer</option>
+                </select>
+
+                <!-- Selector de velocidad de reproducción -->
+                <select id="speedSelect2">
+                  <option value="1">Normal</option>
+                  <option value="2">2x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="0.5">0.5x</option>
+                </select>
+              </div>
+            </div>
+
+            <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
+          </div>
+          <div class="column">
+            <div class="details">
+            </div>
+          </div>
+        </div>
+        <h3>Caperucita Roja</h3>
+        <p id="texto">Había una vez una niña muy bonita que vivía en una aldea cerca del bosque. Su madre la quería
+          mucho, y como siempre iba a casa de su abuela, le dio una capa roja que le quedaba muy bien, por lo que todos
+          la llamaban Caperucita Roja.
+
+          Un día, su madre le pidió que fuera a llevar una cesta con comida a su abuela, que estaba enferma y vivía en
+          una casa al otro lado del bosque. Antes de salir, su madre le advirtió:
+
+          —Caperucita, no hables con extraños y no te apartes del camino.
+
+          Pero Caperucita Roja, al caminar por el bosque, encontró al lobo. Él le preguntó a dónde iba, y ella, sin
+          pensar, le respondió:
+
+          —Voy a casa de mi abuela a llevarle esta cesta con comida.
+
+          El lobo, que era muy astuto, pensó en un plan. Le dijo a Caperucita Roja:
+
+          —¿Por qué no tomas el camino más largo, que es más bonito, y yo tomaré el camino más corto?
+
+          Caperucita Roja, sin saber el peligro, aceptó y se fue por el camino largo. Mientras tanto, el lobo tomó el
+          camino corto, llegó a la casa de la abuela y, después de engañarla, se la comió. Luego, se disfrazó de abuela,
+          se metió en la cama y esperó a que llegara Caperucita Roja.
+
+          Cuando Caperucita Roja llegó a la casa de su abuela, notó algo extraño:
+
+          —Abuela, ¡qué ojos tan grandes tienes! —Son para verte mejor, querida.
+
+          —Abuela, ¡qué orejas tan grandes tienes! —Son para oírte mejor, querida.
+
+          —Abuela, ¡qué dientes tan grandes tienes! —Son para comerte mejor, querida.
+
+          Y, con un salto, el lobo salió de la cama y quiso devorar a Caperucita Roja. Pero en ese momento, un cazador
+          que pasaba por allí escuchó el alboroto, entró en la casa y mató al lobo. Luego, rescató a la abuela, que
+          estaba viva, aunque algo asustada.
+
+          Caperucita Roja aprendió una valiosa lección: nunca más habló con extraños ni desobedeció a su madre. Desde
+          ese día, vivió feliz y sin problemas.</p>
+      </div>
+
+      <div>
+        <a href="home.html" class="btn" style="top: 15px;   left: 1250px; width: 100px; position: absolute;">INICIO</a>
+      </div>
+
+    </div>
+
+    <!-- custom js file link  -->
+    <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
+
+</body>
+
+</html>

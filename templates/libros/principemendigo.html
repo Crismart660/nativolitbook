@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>video playlist</title>
+
+  <!-- font awesome cdn link  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+  <!-- custom css file link  -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+  <header class="header">
+
+    <section class="flex">
+
+
+      <form action="search.html" method="post" class="search-form">
+        <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+        <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="user-btn" class="fas fa-user"></div>
+        <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+        <div class="Selector_imagenes">
+          <img id="profilePic" src="" style="left: -50px;">
+        </div>
+
+
+
+        <br><br><!---cambiar de linea-->
+
+        <!-- Input para seleccionar la imagen -->
+
+
+
+
+        <input type="file" id="fileInput" class="hidden-input" accept="image/*">
+        <label for="fileInput" class="custom-button">Elegir imagen</label>
+
+      </div>
+      </div>
+
+    </section>
+
+  </header>
+
+  <div class="side-bar">
+
+    <div id="close-btn">
+      <i class="fas fa-times"></i>
+    </div>
+
+    <div class="profile">
+      <img src="{{ url_for('static', filename='images/lenguaje.png') }}" class="image" />
+    </div>
+
+    <nav class="navbar">
+      <a href="{{ url_for('interfaz_bp.interfaz') }}"><i class="fas fa-home"></i><span>Inicio</span></a>
+      <a href="{{ url_for('interfaz_bp.courses') }}"><i class="fas fa-graduation-cap"></i><span>Biblioteca</span></a>
+      <a href="{{ url_for('interfaz_bp.gamepad') }}"><i class="fas fa-gamepad"></i><span>GamePad</span></a>
+      <a href="{{ url_for('interfaz_bp.libros') }}"><i class="fas fa-book"></i><span>Libros</span></a>
+    </nav>
+
+
+  </div>
+
+  <div class="playlist-details">
+
+
+    <!-- Contenedor para las dos páginas del libro -->
+    <div class="book">
+
+
+      <!-- Página izquierda (español) -->
+      <div class="page left">
+        <div class="row">
+          <div class="column">
+            <div class="thumb">
+              <img src="{{ url_for('static', filename='images/mendigoyprincipe.jpeg') }}" alt="Imagen en español">
+
+            </div>
+
+            <div class="audio-container">
+              <audio id="audioPlayer">
+                <source src="{{ url_for('static', filename='audio/principemendigovozhombreingles.mp3') }}"
+                  type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+
+              <div class="controls">
+                <button id="playPauseBtn">▶️</button>
+                <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
+
+                <!-- Selector de voz -->
+                <select id="voiceSelect">
+                  <option value="{{ url_for('static', filename='audio/principemendigovozhombreingles.mp3') }}">Boy
+                  </option>
+                  <option value="{{ url_for('static', filename='audio/principevozmujeringles.mp3') }}">Girl</option>
+                </select>
+
+                <!-- Selector de velocidad de reproducción -->
+                <select id="speedSelect">
+                  <option value="1">Normal</option>
+                  <option value="2">2x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="0.5">0.5x</option>
+                </select>
+              </div>
+            </div>
+
+
+
+
+          </div>
+          <div class="Page-text">
+            <div class="details">
+            </div>
+          </div>
+        </div>
+        <h3>The Prince and the Pauper</h3>
+        <p id="texto">Once upon a time in England, there was a young prince named Edward, the son of King Henry VIII. In
+          the same city lived a poor beggar named Tom Canty. Tom lived in a humble neighborhood, and his life was harsh,
+          marked by hunger and the abuse of his father. However, Tom dreamed of being a prince, living in a palace, and
+          enjoying a different life.
+
+          One day, by chance, Tom and Prince Edward met in the streets of London. Both were fascinated by each other—the
+          prince curious about the life of the common people, and Tom amazed by the prince's royalty. In a moment of fun
+          and a desire to escape their respective lives, the two swapped their clothes. The prince put on Tom's rags,
+          and Tom dressed in the prince's royal garments.
+
+          Soon, both realized that their exchange of clothes brought them many problems. The prince, now dressed as a
+          beggar, was taken by the guards to the palace, where they treated him as an imposter. Meanwhile, Tom, dressed
+          as the prince, entered the palace and was mistaken for the real prince.
+
+          Despite Tom’s efforts to behave like a prince, it quickly became clear that he had no idea how to conduct
+          himself in the palace. On the other hand, the prince, in the guise of a beggar, struggled to survive on the
+          streets, unable to solve the problems that arose.
+
+          In time, after many adventures, the prince and Tom managed to switch back to their original roles, but not
+          before they had learned many valuable lessons about life, justice, and the true nature of power.
+
+          In the end, the real prince, Edward, returned to his throne, but with a more humble and wise view of the
+          world. Tom, for his part, became a respected man, helped by his encounter with the prince.</p>
+      </div>
+
+      <!-- Página derecha (inglés) -->
+      <div class="page right">
+        <div class="row">
+          <div class="column">
+            <div class="thumb">
+              <img src="{{ url_for('static', filename='images/castillo.jpeg') }}" alt="Imagen en español">
+
+            </div>
+
+
+            <div class="audio-container">
+              <audio id="audioPlayer2">
+                <source src="{{ url_for('static', filename='audio/principevozhombreespañol.mp3') }}" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+
+              <div class="controls">
+                <button id="playPauseBtn2">▶️</button>
+                <span id="currentTime2">00:00</span> / <span id="duration2">00:00</span>
+
+                <!-- Selector de voz -->
+                <select id="voiceSelect2">
+                  <option value="{{ url_for('static', filename='audio/principevozhombreespañol.mp3') }}">Hombre</option>
+                  <option value="{{ url_for('static', filename='audio/principevozmujerespañol.mp3') }}">Mujer</option>
+                </select>
+
+
+                <!-- Selector de velocidad de reproducción -->
+                <select id="speedSelect2">
+                  <option value="1">Normal</option>
+                  <option value="2">2x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="0.5">0.5x</option>
+                </select>
+              </div>
+            </div>
+
+            <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
+          </div>
+          <div class="column">
+            <div class="details">
+            </div>
+          </div>
+        </div>
+        <h3>El Principe Mendigo</h3>
+        <p id="texto">Había una vez en Inglaterra un joven príncipe llamado Eduardo, hijo del rey Enrique VIII. En la
+          misma ciudad vivía un pobre mendigo llamado Tom Canty. Tom vivía en un barrio humilde, y su vida era dura,
+          marcada por el hambre y el maltrato de su padre. Sin embargo, Tom soñaba con ser un príncipe, vivir en un
+          palacio y disfrutar de una vida diferente.
+
+          Un día, por casualidad, Tom y el príncipe Eduardo se encontraron en las calles de Londres. Ambos estaban
+          fascinados el uno con el otro. El príncipe, curioso por la vida del pueblo, y Tom, asombrado por la realeza
+          del príncipe. En un momento de diversión y deseo de escapar de sus vidas respectivas, los dos intercambiaron
+          sus ropas. El príncipe se puso los harapos de Tom y Tom se vistió con las ropas reales del príncipe.
+
+          Pronto, ambos se dieron cuenta de que sus intercambios de ropa les traían muchos problemas. El príncipe, ahora
+          vestido de mendigo, fue llevado por la guardia al palacio, donde lo trataron como si fuera un impostor.
+          Mientras tanto, Tom, vestido como príncipe, entró en el palacio y fue confundido con el verdadero príncipe.
+
+          A pesar de los esfuerzos de Tom por comportarse como un príncipe, pronto quedó claro que no tenía ni idea de
+          cómo manejarse en el palacio. Por otro lado, el príncipe, en la piel de un mendigo, luchaba por sobrevivir en
+          las calles, sin saber cómo resolver los problemas que surgían.
+
+          Con el tiempo, después de muchas peripecias, el príncipe y Tom lograron volver a intercambiar sus roles, pero
+          no antes de haber aprendido muchas lecciones valiosas sobre la vida, la justicia y la verdadera naturaleza del
+          poder.
+
+          Al final, el verdadero príncipe, Eduardo, regresó a su trono, pero con una visión más humilde y sabia del
+          mundo. Tom, por su parte, se convirtió en un hombre respetado, ayudado por su encuentro con el príncipe.</p>
+      </div>
+
+      <div>
+        <a href="home.html" class="btn" style="top: 15px;   left: 1250px; width: 100px; position: absolute;">INICIO</a>
+      </div>
+
+    </div>
+
+    <!-- custom js file link  -->
+    <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
+
+</body>
+
+</html>

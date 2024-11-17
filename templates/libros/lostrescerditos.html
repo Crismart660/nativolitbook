@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>video playlist</title>
+
+  <!-- font awesome cdn link  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+  <!-- custom css file link  -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+  <header class="header">
+
+    <section class="flex">
+
+
+      <form action="search.html" method="post" class="search-form">
+        <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+        <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="user-btn" class="fas fa-user"></div>
+        <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+        <div class="Selector_imagenes">
+          <img id="profilePic" src="" style="left: -50px;">
+        </div>
+
+
+
+        <br><br><!---cambiar de linea-->
+
+        <!-- Input para seleccionar la imagen -->
+
+
+
+
+        <input type="file" id="fileInput" class="hidden-input" accept="image/*">
+        <label for="fileInput" class="custom-button">Elegir imagen</label>
+
+      </div>
+      </div>
+
+    </section>
+
+  </header>
+
+  <div class="side-bar">
+
+    <div id="close-btn">
+      <i class="fas fa-times"></i>
+    </div>
+
+    <div class="profile">
+      <img src="{{ url_for('static', filename='images/lenguaje.png') }}" class="image" />
+
+    </div>
+
+    <nav class="navbar">
+      <a href="{{ url_for('interfaz_bp.interfaz') }}"><i class="fas fa-home"></i><span>Inicio</span></a>
+      <a href="{{ url_for('interfaz_bp.courses') }}"><i class="fas fa-graduation-cap"></i><span>Biblioteca</span></a>
+      <a href="{{ url_for('interfaz_bp.gamepad') }}"><i class="fas fa-gamepad"></i><span>GamePad</span></a>
+      <a href="{{ url_for('interfaz_bp.libros') }}"><i class="fas fa-book"></i><span>Libros</span></a>
+    </nav>
+
+  </div>
+
+  <div class="playlist-details">
+
+
+    <!-- Contenedor para las dos páginas del libro -->
+    <div class="book">
+
+
+      <!-- Página izquierda (español) -->
+      <div class="page left">
+        <div class="row">
+          <div class="column">
+            <div class="thumb">
+              <img src="{{ url_for('static', filename='images/cerdosmusicales.jpg') }}" alt="Imagen en español">
+
+            </div>
+
+            <div class="audio-container">
+              <audio id="audioPlayer">
+                <source src="{{ url_for('static', filename='audio/lostrescerditosvozhombreingles.mp3') }}"
+                  type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+
+              <div class="controls">
+                <button id="playPauseBtn">▶️</button>
+                <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
+
+                <!-- Selector de voz -->
+                <select id="voiceSelect">
+                  <option value="{{ url_for('static', filename='audio/lostrescerditosvozhombreingles.mp3') }}">Boy
+                  </option>
+                  <option value="{{ url_for('static', filename='audio/lostrescerditosvozmujeringles.mp3') }}">Girl
+                  </option>
+                </select>
+
+
+                <!-- Selector de velocidad de reproducción -->
+                <select id="speedSelect">
+                  <option value="1">Normal</option>
+                  <option value="2">2x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="0.5">0.5x</option>
+                </select>
+              </div>
+            </div>
+
+
+
+
+          </div>
+          <div class="Page-text">
+            <div class="details">
+            </div>
+          </div>
+        </div>
+        <h3>The Three Little Pigs</h3>
+        <p id="texto">Once upon a time, there were three little pigs who lived with their mother. One day, their mother
+          told them it was time to go out and build their own homes. The little pigs said goodbye to their mother, and
+          each decided to build his own house.
+
+          The first little pig, who was the laziest, built his house out of straw. "It’s quick to make," he thought, and
+          soon went to rest. The second little pig, who was a little more hardworking, built his house out of wood. "It
+          will be stronger than the straw house," he thought, and also went to rest.
+
+          The third little pig, who was the most diligent, built his house out of bricks. "It’s the strongest," he
+          thought, and worked very carefully to make sure the house was solid.
+
+          One day, the big bad wolf appeared in the forest. He first went to the straw house of the first little pig.
+          "Little pig, little pig, let me in!" cried the wolf. "Not by the hair of my chinny chin chin!" replied the
+          pig. The wolf, furious, huffed and puffed and blew the straw house down. The little pig ran and took refuge in
+          the wooden house of his brother.
+
+          The wolf, undeterred, went to the wooden house of the second little pig. "Little pigs, little pigs, let me
+          in!" cried the wolf. "Not by the hair of our chinny chin chins!" replied the pigs. The wolf huffed and puffed
+          and blew the wooden house down. The two little pigs ran to the brick house of the third little pig.
+
+          The wolf arrived at the brick house and said, "Little pigs, little pigs, let me in!" But the third little pig
+          replied, "Not by the hair of my chinny chin chin!" The wolf huffed and puffed with all his might, but the
+          brick house didn’t budge. The wolf, angry, tried to enter through the chimney, but the third little pig had
+          prepared a pot of boiling water. The wolf fell into the hot water and ran away, never to return.
+
+          From that day on, the three little pigs lived happily and safely in the brick house, and the wolf never
+          bothered them again.</p>
+      </div>
+
+      <!-- Página derecha (inglés) -->
+      <div class="page right">
+        <div class="row">
+          <div class="column">
+            <div class="thumb">
+              <img src="{{ url_for('static', filename='images/loboferiz.jpg') }}" alt="Imagen en español">
+
+            </div>
+
+
+            <div class="audio-container">
+              <audio id="audioPlayer2">
+
+                <source src="{{ url_for('static', filename='audio/lostrescerditosvozhombreespañol.mp3') }}"
+                  type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+
+              <div class="controls">
+                <button id="playPauseBtn2">▶️</button>
+                <span id="currentTime2">00:00</span> / <span id="duration2">00:00</span>
+
+                <!-- Selector de voz -->
+                <select id="voiceSelect2">
+                  <option value="{{ url_for('static', filename='audio/lostrescerditosvozhombreespañol.mp3') }}">Hombre
+                  </option>
+                  <option value="{{ url_for('static', filename='audio/lostrescerditosvozmujerespañol.mp3') }}">Mujer
+                  </option>
+                </select>
+
+                <!-- Selector de velocidad de reproducción -->
+                <select id="speedSelect2">
+                  <option value="1">Normal</option>
+                  <option value="2">2x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="0.5">0.5x</option>
+                </select>
+              </div>
+            </div>
+
+            <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
+          </div>
+          <div class="column">
+            <div class="details">
+            </div>
+          </div>
+        </div>
+        <h3>Los 3 Cerditos</h3>
+        <p id="texto">Había una vez tres cerditos que vivían con su mamá. Un día, ella les dijo que ya era hora de que
+          se fueran a vivir por su cuenta. Los cerditos se despidieron de su mamá y cada uno decidió construir su propia
+          casa.
+
+          El primer cerdito, que era el más perezoso, construyó su casa de paja. Es rápida de hacer, pensó, y enseguida
+          se fue a descansar. El segundo cerdito, que era un poco más trabajador, construyó su casa de madera. Será más
+          fuerte que la de paja, pensó, y también se fue a descansar.
+
+          El tercer cerdito, que era muy diligente, construyó su casa de ladrillos. Es la más resistente, pensó, y
+          trabajó con mucho cuidado para que la casa fuera bien sólida.
+
+          Un día, el lobo feroz apareció en el bosque. Primero fue a la casa de paja del primer cerdito. ¡Abre la
+          puerta, cerdito!, gritó el lobo. No abriré, no abriré, respondió el cerdito. El lobo, furioso, sopló con mucha
+          fuerza y derribó la casa de paja. El cerdito salió corriendo y se refugió en la casa de madera de su hermano.
+
+          El lobo, no rendido, fue a la casa de madera del segundo cerdito. ¡Abre la puerta, cerditos!, gritó el lobo.
+          No lo haremos, no lo haremos, respondieron los cerditos. El lobo sopló con fuerza y derribó la casa de madera.
+          Los dos cerditos corrieron hacia la casa de ladrillos del tercer cerdito.
+
+          El lobo llegó a la casa de ladrillos y dijo: ¡Abre la puerta, cerditos! Pero el tercer cerdito respondió: No
+          lo haré, no lo haré. El lobo sopló con todas sus fuerzas, pero la casa de ladrillos no se movió. El lobo,
+          enfadado, intentó entrar por la chimenea, pero el tercer cerdito había preparado una olla con agua hirviendo.
+          El lobo cayó en el agua caliente y salió corriendo, nunca más volvió.
+
+          Desde entonces, los tres cerditos vivieron felices y seguros en la casa de ladrillos, y el lobo nunca volvió a
+          molestarlos.</p>
+      </div>
+
+      <div>
+        <a href="home.html" class="btn" style="top: 15px;   left: 1250px; width: 100px; position: absolute;">INICIO</a>
+      </div>
+
+    </div>
+
+    <!-- custom js file link  -->
+    <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
+
+</body>
+
+</html>

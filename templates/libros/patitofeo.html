@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>video playlist</title>
+
+  <!-- font awesome cdn link  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+  <!-- custom css file link  -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+  <header class="header">
+
+    <section class="flex">
+
+
+      <form action="search.html" method="post" class="search-form">
+        <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+        <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="user-btn" class="fas fa-user"></div>
+        <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+        <div class="Selector_imagenes">
+          <img id="profilePic" src="" style="left: -50px;">
+        </div>
+
+
+
+        <br><br><!---cambiar de linea-->
+
+        <!-- Input para seleccionar la imagen -->
+
+
+
+
+        <input type="file" id="fileInput" class="hidden-input" accept="image/*">
+        <label for="fileInput" class="custom-button">Elegir imagen</label>
+
+      </div>
+      </div>
+
+    </section>
+
+  </header>
+
+  <div class="side-bar">
+
+    <div id="close-btn">
+      <i class="fas fa-times"></i>
+    </div>
+
+    <div class="profile">
+      <img src="{{ url_for('static', filename='images/lenguaje.png') }}" class="image" />
+
+    </div>
+
+    <nav class="navbar">
+      <a href="{{ url_for('interfaz_bp.interfaz') }}"><i class="fas fa-home"></i><span>Inicio</span></a>
+      <a href="{{ url_for('interfaz_bp.courses') }}"><i class="fas fa-graduation-cap"></i><span>Biblioteca</span></a>
+      <a href="{{ url_for('interfaz_bp.gamepad') }}"><i class="fas fa-gamepad"></i><span>GamePad</span></a>
+      <a href="{{ url_for('interfaz_bp.libros') }}"><i class="fas fa-book"></i><span>Libros</span></a>
+    </nav>
+
+
+  </div>
+
+  <div class="playlist-details">
+
+
+    <!-- Contenedor para las dos páginas del libro -->
+    <div class="book">
+
+
+      <!-- Página izquierda (español) -->
+      <div class="page left">
+        <div class="row">
+          <div class="column">
+            <div class="thumb">
+              <img src="{{ url_for('static', filename='images/3patitos.jpg') }}" alt="Imagen en español">
+
+            </div>
+
+            <div class="audio-container">
+              <audio id="audioPlayer">
+                <source src="{{ url_for('static', filename='audio/patitofeovozhombreingles.mp3') }}" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+
+              <div class="controls">
+                <button id="playPauseBtn">▶️</button>
+                <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
+
+                <!-- Selector de voz -->
+                <select id="voiceSelect">
+                  <option value="{{ url_for('static', filename='audio/patitofeovozhombreingles.mp3') }}">Boy</option>
+                  <option value="{{ url_for('static', filename='audio/patitofeovozmujeringles.mp3') }}">Girl</option>
+                </select>
+
+                <!-- Selector de velocidad de reproducción -->
+                <select id="speedSelect">
+                  <option value="1">Normal</option>
+                  <option value="2">2x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="0.5">0.5x</option>
+                </select>
+              </div>
+            </div>
+
+
+
+
+          </div>
+          <div class="Page-text">
+            <div class="details">
+            </div>
+          </div>
+        </div>
+        <h3>The Ugly Duckling</h3>
+        <p id="texto">Once upon a time, there was a mother duck who had a nest with several eggs. One day, the eggs
+          began to crack, and all the little ducklings emerged, except for one. The last egg took longer to hatch, but
+          when it finally did, out came a duckling that was different from the others. It was larger, with a grayish
+          color and an awkward appearance, so all the other ducklings looked at it with disdain and mocked it, calling
+          it "the ugly duckling."
+
+          The poor little duckling felt very sad for being so different, and although he tried to join the others, he
+          was rejected and felt alone. He decided to leave in search of a place where he would be accepted. He wandered
+          through the fields and forests, and along the way, he met several animals who also rejected him because of his
+          appearance.
+
+          One day, the duckling arrived at a lake and saw some beautiful swans swimming. He approached timidly, but when
+          he saw his reflection in the water, he realized that he was no longer an ugly duckling, but a magnificent
+          swan. The other swans welcomed him warmly, and he happily joined them. Finally, the ugly duckling had found
+          his true home.
+
+          From that day on, he lived happily among the swans, and all the animals who had once made fun of him realized
+          that the "ugly duckling" was not ugly at all, but a beautiful swan.</p>
+      </div>
+
+      <!-- Página derecha (inglés) -->
+      <div class="page right">
+        <div class="row">
+          <div class="column">
+            <div class="thumb">
+              <img src="{{ url_for('static', filename='images/patitoespejo.jpg') }}" alt="Imagen en español">
+
+            </div>
+
+
+            <div class="audio-container">
+              <audio id="audioPlayer2">
+                <source src="{{ url_for('static', filename='audio/patitofeovozhombreespañol.mp3') }}" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+
+              <div class="controls">
+                <button id="playPauseBtn2">▶️</button>
+                <span id="currentTime2">00:00</span> / <span id="duration2">00:00</span>
+
+                <!-- Selector de voz -->
+                <select id="voiceSelect2">
+                  <option value="{{ url_for('static', filename='audio/patitofeovozhombreespañol.mp3') }}">Hombre
+                  </option>
+                  <option value="{{ url_for('static', filename='audio/patitovozmujerespañol.mp3') }}">Mujer</option>
+                </select>
+
+                <!-- Selector de velocidad de reproducción -->
+                <select id="speedSelect2">
+                  <option value="1">Normal</option>
+                  <option value="2">2x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="0.5">0.5x</option>
+                </select>
+              </div>
+            </div>
+
+            <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
+
+          </div>
+          <div class="column">
+            <div class="details">
+            </div>
+          </div>
+        </div>
+        <h3>El patito feo </h3>
+        <p id="texto">Había una vez una mamá pata que tenía un nido con huevos. Un día, los huevos comenzaron a
+          romperse, y de ellos salieron los patitos, todos menos uno. El último huevo tardó más en romperse, pero cuando
+          al fin lo hizo, salió un patito que era diferente a los demás. Era más grande, de un color grisáceo y con una
+          apariencia extraña, así que todos los demás patitos lo miraron con desdén y se burlaron de él, llamándolo "el
+          patito feo".
+
+          El pobre patito se sintió muy triste por ser tan diferente, y aunque intentó unirse a los demás, fue rechazado
+          y se sintió solo. Decidió marcharse lejos en busca de un lugar donde pudiera ser aceptado. Vagó por el campo y
+          el bosque, y en su camino, se encontró con varios animales que también lo rechazaron debido a su apariencia.
+
+          Un día, el patito llegó a un lago y vio a unos hermosos cisnes nadando. Se acercó tímidamente, pero al ver su
+          reflejo en el agua, descubrió que ya no era un patito feo, sino un majestuoso cisne. Los otros cisnes lo
+          aceptaron con cariño y él, feliz, se unió a ellos. Finalmente, el patito feo había encontrado su verdadero
+          hogar.
+
+          Desde ese día, vivió feliz entre los cisnes, y todos los animales que alguna vez se burlaron de él se dieron
+          cuenta de que el patito no era feo, sino un hermoso cisne.</p>
+      </div>
+
+      <div>
+        <a href="home.html" class="btn" style="top: 15px;   left: 1250px; width: 100px; position: absolute;">INICIO</a>
+      </div>
+
+    </div>
+
+    <!-- custom js file link  -->
+    <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
+
+
+</body>
+
+</html>

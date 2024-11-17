@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/96c5e6dd6c.js" crossorigin="anonymous"></script>
+  <title>NativoLitBook</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styleindex.css') }}" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <header class="header">
+    <section class="container">
+      <div class="logo">
+        <a href="{{ url_for('index') }}">NativoLitBook</a>
+      </div>
+      <button class="menu-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M4 6H20V8H4zM4 11H20V13H4zM4 16H20V18H4z" />
+        </svg>
+        <svg class="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path
+            d="M16.192 6.344L11.949 10.586 7.707 6.344 6.293 7.758 10.535 12 6.293 16.242 7.707 17.656 11.949 13.414 16.192 17.656 17.606 16.242 13.364 12 17.606 7.758z" />
+        </svg>
+      </button>
+      <nav class="menu">
+        <a href="#inicio">Inicio</a>
+        <a href="#acerca">Acerca</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#testimonios">Testimonios</a>
+      </nav>
+      <div class="btn-container">
+        <button class="btn-sesion" onclick="window.location.href='/form'">
+          Registrate o Inicia sesión
+        </button>
+      </div>
+    </section>
+  </header>
+  <section id="inicio" class="home">
+    <article class="hero-image" style="
+    --hero-image: url('{{ url_for('static', filename='assets/hero-image-home.jpg') }}');
+    --hero-attachment: fixed;
+  ">
+      <aside class="hero-image-opacity" style="--hero-opacity-color: var(--black-alpha-color)">
+        <div class="hero-image-content">
+          <h2 class="hero-image-title" style="--hero-text-color: var(--third-color)">
+            Bienvenid@s<br />a NativoLitBook
+          </h2>
+          <a href="#contacto" class="btn">CONTÁCTANOS</a>
+        </div>
+      </aside>
+    </article>
+  </section>
+  <section id="acerca" class="about section full-lg-screen">
+    <article class="text-lg-rigth">
+      <aside class="text-center text-lg-rigth">
+        <h2>NativoLitBook</h2>
+        <h5>Programa para el aprendizaje de idiomas</h5>
+      </aside>
+      <p>
+        NativoLitBook busca una nueva forma de aprendizaje a través de los
+        libros digitales, implementando funciones nuevas para un aprendizaje
+        mucho más efectivo y más productivo.
+      </p>
+    </article>
+    <article>
+      <img src="{{ url_for('static', filename='assets/nbl.png') }}" alt="NativoLitBook" />
+    </article>
+    <article>
+      <aside class="meta text-center text-lg-center">
+        <h2>Meta</h2>
+        <p>
+          Esta plataforma virtual tiene como objetivo desarrollar el
+          aprendizaje de una forma más interactiva y autodidáctica.
+        </p>
+      </aside>
+    </article>
+  </section>
+  <section id="servicios" class="services section bg-gray-light">
+    <div class="container full-lg-screen">
+      <h1 class="section-title">¿Qué te ofrecemos?</h1>
+      <article class="service-card">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book-open">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        <h3>Una biblioteca virtual</h3>
+        <p>
+          En esta bilioteca podras encontrar los <i>libros</i> para tu
+          aprendizaje en el <i>idioma.</i>
+        </p>
+      </article>
+
+      <article class="service-card">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="feather feather-volume-2">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        </svg>
+        <h3>Un lector de voz</h3>
+        <p>
+          Que te permitirá escuchar la voz de una <i>persona nativa </i>y
+          poder comprender <i>vocabulario y pronunciación</i> a tu ritmo.
+        </p>
+      </article>
+      <article class="service-card">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="feather feather-user">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <h3>Instructores</h3>
+        <p>
+          Que están dispuestos a <i>ayudarte y capacitarte</i> en los
+          <i>refuerzos necesarios</i> en tu proceso de aprendizaje.
+        </p>
+      </article>
+      <article class="service-card">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+        <h3>Ayuda al Usuario</h3>
+        <p>
+          En dónde podrás estar en contacto con
+          <i>nuestro soporte de ayuda</i> para cualquier inquietud o
+          eventualidad.
+        </p>
+      </article>
+    </div>
+  </section>
+  <section id="testimonios" class="testimonials">
+    <article class="hero-image" style="
+    --hero-image: url('{{ url_for('static', filename='assets/hero-image-customers.jpg') }}');
+    --hero-attachment: scroll;
+  ">
+      <aside class="hero-image-opacity" style="--hero-opacity-color: var(--white-alpha-color)">
+        <div class="hero-image-content">
+          <div class="container">
+            <h1 class="section-title">Los usuarios dicen</h1>
+            <article class="carousel" style="--carousel-bg-color: var(--white-alpha-color)">
+              <input type="radio" name="slides" id="slide-1" checked />
+              <input type="radio" name="slides" id="slide-2" />
+              <input type="radio" name="slides" id="slide-3" />
+              <input type="radio" name="slides" id="slide-4" />
+
+              <ul class="slides">
+                <li class="slide">
+                  <img class="avatar" src="{{ url_for('static', filename='assets/customer-1.jpg') }}"
+                    alt="Usuario uno" />
+
+                  <blockquote>
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Perspiciatis nulla facere animi, cumque repellendus
+                    laboriosam praesentium consequuntur ut tempore minus,
+                    culpa in mollitia voluptate exercitationem deleniti ea eum
+                    ab debitis!"
+                  </blockquote>
+                  <h3 class="text-first-color">Nombre Cliente</h3>
+                  <h6>Puesto del usuario</h6>
+                </li>
+                <li class="slide">
+                  <img class="avatar" src="{{ url_for('static', filename='assets/customer-2.jpg') }}"
+                    alt="Usuario dos" />
+
+                  <blockquote>
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Perspiciatis nulla facere animi, cumque repellendus
+                    laboriosam praesentium consequuntur ut tempore minus,
+                    culpa in mollitia voluptate exercitationem deleniti ea eum
+                    ab debitis!"
+                  </blockquote>
+                  <h3 class="text-first-color">Nombre Cliente</h3>
+                  <h6>Puesto del usuario</h6>
+                </li>
+                <li class="slide">
+                  <img class="avatar" src="{{ url_for('static', filename='assets/customer-1.jpg') }}"
+                    alt="Usuario uno" />
+
+                  <blockquote>
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Perspiciatis nulla facere animi, cumque repellendus
+                    laboriosam praesentium consequuntur ut tempore minus,
+                    culpa in mollitia voluptate exercitationem deleniti ea eum
+                    ab debitis!"
+                  </blockquote>
+                  <h3 class="text-first-color">Nombre Cliente</h3>
+                  <h6>Puesto del usuario</h6>
+                </li>
+                <li class="slide">
+                  <img class="avatar" src="{{ url_for('static', filename='assets/customer-2.jpg') }}"
+                    alt="Usuario dos" />
+
+                  <blockquote>
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Perspiciatis nulla facere animi, cumque repellendus
+                    laboriosam praesentium consequuntur ut tempore minus,
+                    culpa in mollitia voluptate exercitationem deleniti ea eum
+                    ab debitis!"
+                  </blockquote>
+                  <h3 class="text-first-color">Nombre Cliente</h3>
+                  <h6>Puesto del usuario</h6>
+                </li>
+              </ul>
+
+              <!-- Navegación de los puntos -->
+              <aside class="slides-nav">
+                <label for="slide-1" id="dot-1"></label>
+                <label for="slide-2" id="dot-2"></label>
+                <label for="slide-3" id="dot-3"></label>
+                <label for="slide-4" id="dot-4"></label>
+              </aside>
+            </article>
+          </div>
+        </div>
+      </aside>
+    </article>
+  </section>
+  <section id="contacto" class="contact section">
+    <div class="container">
+      <h1 class="section-title">¿Interesado?</h1>
+      <article class="contact-cards">
+        <form class="contact-form box-shadow-1">
+          <input type="text" name="name" placeholder="Ingresa tu nombre *"
+            title="Nombre sólo acepta letras y espacios en blanco" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required />
+          <input type="email" name="email" id="email" placeholder="Ingresa tu correo *" title="Email incorrecto"
+            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required />
+          <textarea name="comments" cols="50" rows="10" placeholder="Déjame tus comentarios *" required></textarea>
+          <div class="contact-form-loader text-center none">
+            <img src="{{ url_for('static', filename='assets/loader.svg') }}" alt="Enviando..." />
+
+          </div>
+          <input class="btn" type="submit" value="ENVIAR MENSAJE" />
+        </form>
+
+        <div class="modal" id="gracias">
+          <div class="modal-content">
+            <div class="contact-form-response">
+              <h3>¡Gracias por tu mensaje!</h3>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M12,18c4,0,5-4,5-4H7C7,14,8,18,12,18z" />
+                <path
+                  d="M12,2C6.486,2,2,6.486,2,12c0,5.514,4.486,10,10,10s10-4.486,10-10C22,6.486,17.514,2,12,2z M12,20c-4.411,0-8-3.589-8-8 s3.589-8,8-8s8,3.589,8,8S16.411,20,12,20z" />
+                <path
+                  d="M13 12l2 .012C15.012 11.55 15.194 11 16 11s.988.55 1 1h2c0-1.206-.799-3-3-3S13 10.794 13 12zM8 11c.806 0 .988.55 1 1h2c0-1.206-.799-3-3-3s-3 1.794-3 3l2 .012C7.012 11.55 7.194 11 8 11z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <small> &copy; copyright By <span>@NativoLitBook</span> 2024 | all rights reserved!</small>
+  </footer>
+  <script src="{{ url_for('static', filename='js/scriptindex.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>video playlist</title>
+
+  <!-- font awesome cdn link  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+  <!-- custom css file link  -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+  <header class="header">
+
+    <section class="flex">
+
+
+
+      <form action="search.html" method="post" class="search-form">
+        <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+        <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="user-btn" class="fas fa-user"></div>
+        <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+        <div class="Selector_imagenes">
+          <img id="profilePic" src="" style="left: -50px;">
+        </div>
+
+
+
+        <br><br><!---cambiar de linea-->
+
+        <!-- Input para seleccionar la imagen -->
+
+
+
+
+        <input type="file" id="fileInput" class="hidden-input" accept="image/*">
+        <label for="fileInput" class="custom-button">Elegir imagen</label>
+
+      </div>
+      </div>
+
+    </section>
+
+  </header>
+
+  <div class="side-bar">
+
+    <div id="close-btn">
+      <i class="fas fa-times"></i>
+    </div>
+
+    <div class="profile">
+      <img src="{{ url_for('static', filename='images/lenguaje.png') }}" class="image" />
+    </div>
+
+    <nav class="navbar">
+      <a href="{{ url_for('interfaz_bp.interfaz') }}"><i class="fas fa-home"></i><span>Inicio</span></a>
+      <a href="{{ url_for('interfaz_bp.courses') }}"><i class="fas fa-graduation-cap"></i><span>Biblioteca</span></a>
+      <a href="{{ url_for('interfaz_bp.gamepad') }}"><i class="fas fa-gamepad"></i><span>GamePad</span></a>
+      <a href="{{ url_for('interfaz_bp.libros') }}"><i class="fas fa-book"></i><span>Libros</span></a>
+    </nav>
+
+  </div>
+
+  <div class="playlist-details">
+
+
+    <!-- Contenedor para las dos páginas del libro -->
+    <div class="book">
+
+
+      <!-- Página izquierda (español) -->
+      <div class="page left">
+        <div class="row">
+          <div class="column">
+            <div class="thumb">
+              <img src="{{ url_for('static', filename='images/gatoycampesino.jpeg') }}" alt="Imagen en español">
+
+            </div>
+
+            <div class="audio-container">
+              <audio id="audioPlayer">
+                <source src="{{ url_for('static', filename='audio/gatoconbotasvozhombreingles.mp3') }}"
+                  type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+
+              <div class="controls">
+                <button id="playPauseBtn">▶️</button>
+                <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
+
+                <!-- Selector de voz -->
+                <select id="voiceSelect">
+                  <option value="{{ url_for('static', filename='audio/gatoconbotasvozhombreingles.mp3') }}">Boy</option>
+                  <option value="{{ url_for('static', filename='audio/gatovozmujeringles.mp3') }}">Girl</option>
+                </select>
+
+
+                <!-- Selector de velocidad de reproducción -->
+                <select id="speedSelect">
+                  <option value="1">Normal</option>
+                  <option value="2">2x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="0.5">0.5x</option>
+                </select>
+              </div>
+            </div>
+
+
+
+
+          </div>
+          <div class="Page-text">
+            <div class="details">
+            </div>
+          </div>
+        </div>
+        <h3>Puss in Boots</h3>
+        <p id="texto">Once upon a time, there was a miller who had three sons. When the miller died, he left his
+          inheritance to them: the mill, the donkey, and the cat. The two elder sons took the mill and the donkey, while
+          the youngest, who had nothing but the cat, felt very sad.
+
+          One day, the cat, who was very clever, came up to the youngest son and said:
+          —Don't worry, I will help you. Give me a bag and a pair of boots, and you'll see what I can do for you.
+
+          The young man, puzzled, gave the cat what it asked for. The cat put on the boots and went to the forest, where
+          it caught a rabbit and took it to the king. The cat told the king that its master, the Marquis of Carabas, had
+          sent the gift. The king was surprised by the gesture and thanked him for the present.
+
+          The cat continued its clever schemes. It went to other places, hunting animals and offering them to the king,
+          always saying that they were from its master, the Marquis of Carabas. The king, impressed, began to take an
+          interest in the mysterious marquis.
+
+          One day, the cat learned that the king was going for a ride with his daughter, the princess, near the river.
+          The cat told its master to bathe in the river, and when the king passed by, the cat screamed for help, saying
+          that the Marquis of Carabas was drowning. The king, seeing that the man was a noble, ordered him to be
+          rescued, and the princess became enchanted with him.
+
+          The cat cleverly told the king that its master, the Marquis of Carabas, owned vast lands and castles.
+          Meanwhile, the cat ran to a castle belonging to a fearsome ogre and tricked him into turning into a mouse.
+          When the ogre did so, the cat ate him up.
+
+          The Marquis of Carabas, now rich and powerful, married the princess, and they lived happily in the castle that
+          the cat had won for them. The cat with boots became a noble and lived happily ever after, always faithful to
+          its master.
+
+        </p>
+      </div>
+
+      <!-- Página derecha (inglés) -->
+      <div class="page right">
+        <div class="row">
+          <div class="column">
+            <div class="thumb">
+              <img src="{{ url_for('static', filename='images/gatoyogro.jpeg') }}" alt="Imagen en español">
+
+            </div>
+
+
+            <div class="audio-container">
+              <audio id="audioPlayer2">
+                <source src="{{ url_for('static', filename='audio/gatovozhombreespañol.mp3') }}" type="audio/mpeg">
+
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+
+              <div class="controls">
+                <button id="playPauseBtn2">▶️</button>
+                <span id="currentTime2">00:00</span> / <span id="duration2">00:00</span>
+
+                <!-- Selector de voz -->
+                <select id="voiceSelect2">
+                  <option value="{{ url_for('static', filename='audio/gatovozhombreespañol.mp3') }}">Hombre</option>
+                  <option value="{{ url_for('static', filename='audio/gatovozmujerespañol.mp3') }}">Mujer</option>
+                </select>
+
+
+                <!-- Selector de velocidad de reproducción -->
+                <select id="speedSelect2">
+                  <option value="1">Normal</option>
+                  <option value="2">2x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="0.5">0.5x</option>
+                </select>
+              </div>
+            </div>
+
+            <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
+          </div>
+          <div class="column">
+            <div class="details">
+            </div>
+          </div>
+        </div>
+        <h3>El Gato Con Botas</h3>
+        <p id="texto">Había una vez un molinero que tenía tres hijos. Al morir, les dejó en herencia su molino, su burro
+          y su gato. Los dos hijos mayores tomaron el molino y el burro, mientras que el hijo menor, que no tenía nada
+          más que al gato, se sintió muy triste.
+
+          Un día, el gato, que era muy astuto, se acercó al joven y le dijo:
+          —No te preocupes, yo te ayudaré. Dame un saco y un par de botas, y verás lo que puedo hacer por ti.
+
+          El joven, desconcertado, le dio lo que le pidió. El gato se puso las botas y se fue al bosque, donde atrapó un
+          conejo y lo llevó al rey. Le dijo al rey que su amo, el Marqués de Carabás, le enviaba un regalo. El rey se
+          sorprendió por el gesto y agradeció el presente.
+
+          El gato continuó sus estrategias. Fue a otros lugares a cazar animales y los ofreció al rey, siempre diciendo
+          que su amo, el Marqués de Carabás, se los enviaba. El rey, impresionado, comenzó a interesarse por el
+          misterioso marqués.
+
+          Un día, el gato supo que el rey iba a pasear con su hija, la princesa, cerca del río. Entonces, le dijo a su
+          amo que se bañara en el río y, cuando pasó el rey, el gato gritó pidiendo ayuda, diciendo que el Marqués de
+          Carabás se estaba ahogando. El rey, al ver que era un hombre noble, ordenó que lo rescataran, y la princesa
+          quedó encantada con él.
+
+          El gato, astuto, dijo al rey que su amo, el Marqués de Carabás, era dueño de grandes tierras y castillos.
+          Mientras tanto, el gato corrió a un castillo que pertenecía a un ogro temido por todos y lo engañó para que se
+          transformara en un ratón. Cuando el ogro lo hizo, el gato lo devoró.
+
+          El Marqués de Carabás, ahora rico y poderoso, casó con la princesa, y vivieron felices en el castillo que el
+          gato había ganado para ellos. El gato con botas se convirtió en un noble y vivió feliz para siempre, siempre
+          fiel a su amo.</p>
+      </div>
+
+      <div>
+        <a href="home.html" class="btn" style="top: 15px;   left: 1250px; width: 100px; position: absolute;">INICIO</a>
+      </div>
+
+    </div>
+
+    <!-- custom js file link  -->
+    <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
+
+</body>
+
+</html>

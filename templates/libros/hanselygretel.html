@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>video playlist</title>
+
+  <!-- font awesome cdn link  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+  <!-- custom css file link  -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+  <header class="header">
+
+    <section class="flex">
+
+
+      <form action="search.html" method="post" class="search-form">
+        <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+        <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="user-btn" class="fas fa-user"></div>
+        <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+        <div class="Selector_imagenes">
+          <img id="profilePic" src="" style="left: -50px;">
+        </div>
+
+
+
+        <br><br><!---cambiar de linea-->
+
+        <!-- Input para seleccionar la imagen -->
+
+
+
+
+        <input type="file" id="fileInput" class="hidden-input" accept="image/*">
+        <label for="fileInput" class="custom-button">Elegir imagen</label>
+
+      </div>
+      </div>
+
+    </section>
+
+  </header>
+
+  <div class="side-bar">
+
+    <div id="close-btn">
+      <i class="fas fa-times"></i>
+    </div>
+
+    <div class="profile">
+      <img src="{{ url_for('static', filename='images/lenguaje.png') }}" class="image" />
+    </div>
+
+    <nav class="navbar">
+      <a href="{{ url_for('interfaz_bp.interfaz') }}"><i class="fas fa-home"></i><span>Inicio</span></a>
+      <a href="{{ url_for('interfaz_bp.courses') }}"><i class="fas fa-graduation-cap"></i><span>Biblioteca</span></a>
+      <a href="{{ url_for('interfaz_bp.gamepad') }}"><i class="fas fa-gamepad"></i><span>GamePad</span></a>
+      <a href="{{ url_for('interfaz_bp.libros') }}"><i class="fas fa-book"></i><span>Libros</span></a>
+    </nav>
+
+  </div>
+
+  <div class="playlist-details">
+
+
+    <!-- Contenedor para las dos páginas del libro -->
+    <div class="book">
+
+
+      <!-- Página izquierda (español) -->
+      <div class="page left">
+        <div class="row">
+          <div class="column">
+            <div class="thumb">
+              <img src="{{ url_for('static', filename='images/aseohansel.jpg') }}" alt="Imagen en español">
+            </div>
+
+            <div class="audio-container">
+              <audio id="audioPlayer">
+                <source src="{{ url_for('static', filename='audio/HanselHombreIn.mp3') }}" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+
+              <div class="controls">
+                <button id="playPauseBtn">▶️</button>
+                <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
+
+                <!-- Selector de voz -->
+                <select id="voiceSelect">
+                  <option value="{{ url_for('static', filename='audio/HanselHombreIn.mp3') }}">Boy</option>
+                  <option value="{{ url_for('static', filename='audio/HanselMujerIn.mp3') }}">Girl</option>
+                </select>
+
+
+                <!-- Selector de velocidad de reproducción -->
+                <select id="speedSelect">
+                  <option value="1">Normal</option>
+                  <option value="2">2x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="0.5">0.5x</option>
+                </select>
+              </div>
+            </div>
+
+
+
+
+          </div>
+          <div class="Page-text">
+            <div class="details">
+            </div>
+          </div>
+        </div>
+        <h3>Hansel and Grettel</h3>
+        <p id="texto">Once upon a time, there was a family of bears who lived in a lovely little house in the forest.
+          Papa Bear was very large, Mama Bear was medium-sized, and Baby Bear was small.
+
+          One morning, Mama Bear served the most delicious porridge for breakfast, but since it was too hot to eat, the
+          three bears decided to take a walk in the forest while it cooled down. After a few minutes, a little girl
+          named Goldilocks arrived at the bears’ house and knocked on the door. When no one answered, she opened the
+          door and entered the house without permission.
+
+          In the kitchen, there was a table with three bowls of porridge: one large, one medium, and one small.
+          Goldilocks was very hungry, and the porridge looked delicious. First, she tasted the porridge from the large
+          bowl, but it was too cold, and she didn’t like it. Then, she tried the porridge from the medium bowl, but it
+          was too hot, and she didn’t like it either. Finally, she tried the porridge from the small bowl, and this time
+          the porridge wasn’t too cold or too hot; it was just right! The porridge was so delicious that she ate it all
+          up without leaving a single bit.
+
+          After eating the bears’ breakfast, Goldilocks went to the living room. In the living room, there were three
+          chairs: a large one, a medium one, and a small one. First, she sat in the large chair, but it was too tall,
+          and she didn’t like it. Then, she sat in the medium chair, but it was too wide, and she didn’t like it either.
+          Finally, she found the small chair and sat in it, but the chair was fragile and broke under her weight.
+
+          Looking for a place to rest, Goldilocks climbed up the stairs. At the end of the hall, there was a room with
+          three beds: a large one, a medium one, and a small one. First, she climbed into the large bed, but it was too
+          hard, and she didn’t like it. Next, she climbed into the medium bed, but it was too soft, and she didn’t like
+          it either. Then, she lay down in the small bed, and it wasn’t too hard or too soft. In fact, it felt just
+          right! Goldilocks fell fast asleep.
+
+          Shortly after, the three bears returned from their walk in the forest. Papa Bear immediately noticed that the
+          door was open.
+
+          "Someone has entered our house without permission, sat in my chair, and tried my porridge," said Papa Bear in
+          a big, angry voice.
+
+          "Someone sat in my chair and tried my porridge," said Mama Bear in a mildly angry voice.
+
+          Then Baby Bear said in his little voice:
+
+          "Someone ate all my porridge and broke my chair."
+
+          The three bears went up the stairs. As they entered the bedroom, Papa Bear said:
+
+          "Someone has been sleeping in my bed!"
+
+          And Mama Bear exclaimed:
+
+          "Someone has been sleeping in my bed too!"
+
+          And Baby Bear said:
+
+          "Someone is sleeping in my bed!" —and he started crying in despair.
+
+          Baby Bear's cry woke up Goldilocks, who was very frightened. She jumped out of bed and ran down the stairs,
+          all the way to the forest, never to return to the bears' house again.</p>
+      </div>
+
+      <!-- Página derecha (inglés) -->
+      <div class="page right">
+        <div class="row">
+          <div class="column">
+            <div class="thumb">
+              <img src="{{ url_for('static', filename='images/brujahansel.jpg') }}" alt="Imagen en español">
+            </div>
+
+
+            <div class="audio-container">
+              <audio id="audioPlayer2">
+                <source src="{{ url_for('static', filename='audio/GbHnasel.Es.mp3') }}" type="audio/mpeg">
+
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+
+              <div class="controls">
+                <button id="playPauseBtn2">▶️</button>
+                <span id="currentTime2">00:00</span> / <span id="duration2">00:00</span>
+
+                <!-- Selector de voz -->
+                <select id="voiceSelect2">
+                  <option value="{{ url_for('static', filename='audio/GbHnasel.Es.mp3') }}">Hombre</option>
+                  <option value="{{ url_for('static', filename='audio/HanselMujerEs.mp3') }}">Mujer</option>
+                </select>
+
+                <!-- Selector de velocidad de reproducción -->
+                <select id="speedSelect2">
+                  <option value="1">Normal</option>
+                  <option value="2">2x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="0.5">0.5x</option>
+                </select>
+              </div>
+            </div>
+
+            <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
+          </div>
+          <div class="column">
+            <div class="details">
+            </div>
+          </div>
+        </div>
+        <h3>Hansel y Gretel</h3>
+        <p id="texto">Había una vez, en un pequeño pueblo junto al bosque, un leñador y su esposa que vivían con sus
+          dos
+          hijos, Hansel y Gretel. La familia era muy pobre, y con el tiempo, llegó una época de gran escasez de
+          alimentos. La madrastra de los niños, preocupada por la falta de comida, le dijo al leñador que no tendrían
+          otra opción que abandonar a Hansel y Gretel en el bosque, ya que no había suficiente para todos.
+
+          El leñador, aunque apenado, aceptó la propuesta, y esa noche, mientras los niños dormían, se pusieron de
+          acuerdo. Sin embargo, Hansel y Gretel escucharon todo desde su habitación y, aterrados, comenzaron a pensar
+          en
+          un plan para regresar a casa.
+
+          Al día siguiente, cuando los llevaron al bosque, Hansel tomó secretamente trozos de pan y los fue dejando
+          caer
+          a lo largo del camino para poder encontrar el regreso. Pero, cuando intentaron volver, se dieron cuenta de
+          que
+          los pájaros del bosque se habían comido todas las migas, dejándolos perdidos y sin camino a casa.
+
+          Después de vagar por el bosque, los niños se encontraron con una extraña casita hecha de pan de jengibre y
+          dulces. Fascinados por el aspecto delicioso de la casa y muertos de hambre, comenzaron a morder las paredes
+          de
+          caramelo y ventanas de chocolate. De repente, una anciana salió de la casa y los invitó a entrar,
+          aparentando
+          ser amable y dulce.
+
+          Una vez dentro, sin embargo, la anciana reveló su verdadera identidad: ¡era una malvada bruja que usaba la
+          casa de dulces para atraer a niños perdidos! Encerró a Hansel en una jaula y obligó a Gretel a hacer las
+          tareas de la casa. La bruja tenía un plan: engordar a Hansel para comérselo.
+
+          Todos los días, la bruja le daba comida a Hansel, mientras le pedía que le mostrara su dedo para ver si
+          estaba
+          ganando peso. Hansel, sabiendo que la bruja no veía bien, le mostraba un hueso en lugar de su dedo, y la
+          bruja, engañada, pensaba que seguía flaco y le daba más tiempo.
+
+          Un día, la bruja, impaciente y hambrienta, decidió que ya no iba a esperar más y que se comería a Hansel
+          aunque no estuviera listo. Le pidió a Gretel que revisara el horno para ver si estaba lo suficientemente
+          caliente, pero Gretel, astuta, fingió no saber cómo hacerlo. Entonces, la bruja, molesta, se acercó para
+          mostrarle cómo se hacía, y en ese momento, Gretel aprovechó para empujarla dentro del horno y cerrar la
+          puerta.
+
+          Con la bruja atrapada en el horno, Gretel liberó a Hansel de la jaula y juntos encontraron un cofre lleno de
+          joyas y monedas de oro en la casa de la bruja. Cargando el tesoro, regresaron a casa, donde su padre los
+          recibió con alegría y sorpresa. La malvada madrastra ya no estaba, y ahora la familia tenía suficiente para
+          vivir sin preocupaciones.
+
+          Hansel y Gretel, gracias a su valentía e ingenio, vivieron felices y en paz, junto a su padre, para siempre.
+        </p>
+      </div>
+
+      <div>
+        <a href="home.html" class="btn" style="top: 15px;   left: 1250px; width: 100px; position: absolute;">INICIO</a>
+      </div>
+
+    </div>
+
+    <!-- custom js file link  -->
+    <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
+
+</body>
+
+</html>

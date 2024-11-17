@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>video playlist</title>
+
+  <!-- font awesome cdn link  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+  <!-- custom css file link  -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+  <header class="header">
+
+    <section class="flex">
+
+
+      <form action="search.html" method="post" class="search-form">
+        <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+        <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="user-btn" class="fas fa-user"></div>
+        <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+        <div class="Selector_imagenes">
+          <img id="profilePic" src="" style="left: -50px;">
+        </div>
+
+
+
+        <br><br><!---cambiar de linea-->
+
+        <!-- Input para seleccionar la imagen -->
+
+
+
+
+        <input type="file" id="fileInput" class="hidden-input" accept="image/*">
+        <label for="fileInput" class="custom-button">Elegir imagen</label>
+
+      </div>
+      </div>
+
+    </section>
+
+  </header>
+
+  <div class="side-bar">
+
+    <div id="close-btn">
+      <i class="fas fa-times"></i>
+    </div>
+
+    <div class="profile">
+      <img src="{{ url_for('static', filename='images/lenguaje.png') }}" class="image" />
+
+    </div>
+
+    <nav class="navbar">
+      <a href="{{ url_for('interfaz_bp.interfaz') }}"><i class="fas fa-home"></i><span>Inicio</span></a>
+      <a href="{{ url_for('interfaz_bp.courses') }}"><i class="fas fa-graduation-cap"></i><span>Biblioteca</span></a>
+      <a href="{{ url_for('interfaz_bp.gamepad') }}"><i class="fas fa-gamepad"></i><span>GamePad</span></a>
+      <a href="{{ url_for('interfaz_bp.libros') }}"><i class="fas fa-book"></i><span>Libros</span></a>
+    </nav>
+
+  </div>
+
+  <div class="playlist-details">
+
+
+    <!-- Contenedor para las dos páginas del libro -->
+    <div class="book">
+
+
+      <!-- Página izquierda (español) -->
+      <div class="page left">
+        <div class="row">
+          <div class="column">
+            <div class="thumb">
+              <img src="{{ url_for('static', filename='images/espejoblanca.jpg') }}" alt="Imagen en español">
+
+            </div>
+
+            <div class="audio-container">
+              <audio id="audioPlayer">
+                <source src="{{ url_for('static', filename='audio/Blancavozhombreingles.mp3') }}" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+
+              <div class="controls">
+                <button id="playPauseBtn">▶️</button>
+                <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
+
+                <!-- Selector de voz -->
+                <select id="voiceSelect">
+                  <option value="{{ url_for('static', filename='audio/Blancavozhombreingles.mp3') }}">Boy</option>
+                  <option value="{{ url_for('static', filename='audio/blancavozmujeringles.mp3') }}">Girl</option>
+                </select>
+
+
+                <!-- Selector de velocidad de reproducción -->
+                <select id="speedSelect">
+                  <option value="1">Normal</option>
+                  <option value="2">2x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="0.5">0.5x</option>
+                </select>
+              </div>
+            </div>
+
+
+
+
+          </div>
+          <div class="Page-text">
+            <div class="details">
+            </div>
+          </div>
+        </div>
+        <h3>Snow White</h3>
+        <p id="texto">Once upon a time, in a faraway kingdom, there was a beautiful queen who wished to have a daughter.
+          One day, while sewing by the window, she pricked her finger with the needle, and as three drops of blood fell
+          onto the snow, she thought, "I wish I had a daughter as white as snow, as red as blood, and as black as this
+          wooden frame." Soon after, the queen had a daughter, whom she named Snow White. The child was as beautiful as
+          the queen had wished, but tragically, the queen died shortly after giving birth.
+
+          The king remarried a woman who was very beautiful but also very vain and wicked, and who owned a magical
+          mirror. Every day, the queen would ask the mirror:
+
+          —Mirror, mirror, on the wall, who is the fairest of them all?
+
+          And the mirror would always answer:
+
+          —You, my queen, are the fairest of them all.
+
+          However, when Snow White grew up and became a very beautiful young woman, the mirror answered one day:
+
+          —You, my queen, are very beautiful, but Snow White is a thousand times more beautiful than you.
+
+          The queen, filled with jealousy and fury, ordered a huntsman to take Snow White into the forest and kill her,
+          bringing back her heart. The huntsman, however, could not bring himself to harm the girl and let her go into
+          the forest. Terrified, Snow White ran deep into the woods until she found a small house, which belonged to
+          seven dwarfs who worked in the mines.
+
+          The dwarfs, seeing Snow White, took her in and asked her to stay with them. Snow White lived happily with the
+          dwarfs, but when the wicked queen learned that Snow White was still alive, she disguised herself and went to
+          the house of the dwarfs to kill her.
+
+          First, she gave Snow White a tightly laced corset that suffocated her. Snow White collapsed, and when the
+          dwarfs found her, they thought she was dead. They placed her in a glass coffin. Soon after, a prince passing
+          by saw Snow White and, upon kissing her, woke her from the spell. The kiss broke the curse, and Snow White
+          came back to life.
+
+          In the end, Snow White and the prince married, and the wicked queen, upon hearing of their wedding, was
+          punished for her evil deeds. Snow White lived happily ever after with her prince, and the wicked queen never
+          troubled anyone again.</p>
+      </div>
+
+      <!-- Página derecha (inglés) -->
+      <div class="page right">
+        <div class="row">
+          <div class="column">
+            <div class="thumb">
+              <img src="{{ url_for('static', filename='images/blancanievesmanzana.jpg') }}" alt="Imagen en español">
+
+            </div>
+
+
+
+            <div class="audio-container">
+              <audio id="audioPlayer2">
+                <source src="{{ url_for('static', filename='audio/blancavozhombreespañol.mp3') }}" type="audio/mpeg">
+
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+
+              <div class="controls">
+                <button id="playPauseBtn2">▶️</button>
+                <span id="currentTime2">00:00</span> / <span id="duration2">00:00</span>
+
+                <!-- Selector de voz -->
+                <select id="voiceSelect2">
+                  <option value="{{ url_for('static', filename='audio/blancavozhombreespañol.mp3') }}">Hombre</option>
+                  <option value="{{ url_for('static', filename='audio/blancavozmujerespañol.mp3') }}">Mujer</option>
+                </select>
+
+                <!-- Selector de velocidad de reproducción -->
+                <select id="speedSelect2">
+                  <option value="1">Normal</option>
+                  <option value="2">2x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="0.5">0.5x</option>
+                </select>
+              </div>
+            </div>
+
+            <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
+          </div>
+          <div class="column">
+            <div class="details">
+            </div>
+          </div>
+        </div>
+        <h3>Blancanieves</h3>
+        <p id="texto">Había una vez, en un reino lejano, una hermosa reina que deseaba tener una hija. Un día, mientras
+          estaba cosiendo junto a la ventana, se pinchó el dedo con la aguja y, al ver caer tres gotas de sangre sobre
+          la nieve, pensó: "Ojalá tuviera una hija tan blanca como la nieve, tan roja como la sangre y tan negra como la
+          madera de este marco". Poco tiempo después, la reina tuvo una niña a la que llamó Blancanieves. La niña era
+          tan hermosa como su madre había deseado, pero, desgraciadamente, la reina murió poco después del parto.
+
+          El rey volvió a casarse con una mujer muy hermosa, pero también muy vanidosa y malvada, que tenía un espejo
+          mágico. Todos los días, la reina preguntaba al espejo:
+
+          —Espejito, espejito, ¿quién es la más bella del reino?
+
+          Y el espejo siempre respondía:
+
+          —Tú, señora reina, eres la más bella del reino.
+
+          Sin embargo, cuando Blancanieves creció y se convirtió en una joven muy hermosa, el espejo respondió un día:
+
+          —Tú, señora reina, eres muy bella, pero Blancanieves es mil veces más hermosa que tú.
+
+          La reina, llena de celos y furia, mandó a un cazador a que matara a Blancanieves y le trajera su corazón. El
+          cazador, sin embargo, no pudo hacerle daño a la niña y la dejó escapar en el bosque. Blancanieves, asustada,
+          corrió por el bosque hasta que encontró una casita, la cual pertenecía a siete enanitos que trabajaban en las
+          minas.
+
+          Los enanitos, al ver a Blancanieves, la acogieron y le pidieron que se quedara con ellos. Blancanieves vivió
+          felizmente con los enanitos, pero la malvada reina, al enterarse de que Blancanieves seguía viva, se disfrazó
+          y se dirigió a la casa de los enanitos para matarla.
+
+          Primero, le dio a Blancanieves una corsé muy apretado, que la dejó sin aire. Luego, la niña cayó al suelo, y
+          los enanitos, al encontrarla, pensaron que estaba muerta. La pusieron en un ataúd de cristal. Poco después, un
+          príncipe que pasaba por el lugar vio a Blancanieves y, al besarla, la despertó. El beso rompió el hechizo, y
+          Blancanieves volvió a la vida.
+
+          Finalmente, Blancanieves y el príncipe se casaron, y la malvada reina, al enterarse de la boda, fue castigada
+          por su maldad. Blancanieves vivió felizmente con su príncipe, y la reina malvada ya no molestó a nadie más.
+        </p>
+      </div>
+
+      <div>
+        <a href="home.html" class="btn" style="top: 15px;   left: 1250px; width: 100px; position: absolute;">INICIO</a>
+      </div>
+
+    </div>
+
+    <!-- custom js file link  -->
+    <script src="{{ url_for('static', filename='js/scriptinterfaz.js') }}"></script>
+
+
+
+</body>
+
+</html>

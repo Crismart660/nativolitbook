@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap");
+* {
+  /* IMPORTAMOS LIBRERIA PARA QUE TODO NUESTRO DOCUMENTO TENGA COMO FUENTE DE ESTILO LA LETRA MOCHIY */
+  box-sizing: border-box; /* Cuando empezemos a definir cosas como altura (height), ancho (width) etc. Es muy normal que tengamos en mente que esas medidas se tienen que mantener si o si que no puede ser mas pequeño ni mas grande si asi lo establecimos, sin embargo aveces no se respeta eso y es por eso que usamos esta funcion ejemplo:
+    
+    SIN BOX-SIZING
+
+    HTML
+    <div class="box">Soy una caja</div>
+
+    CSS
+
+*, *:before, *:after {
+    
+margin: 0;
+padding: 0;
+}
+
+.box {
+background-color: green;
+height: 300px;
+width: 100%
+border: 100px solid red;
+
+}
+
+Resultado: El tamaño sera mas grande del establecido del que realmente queriamos
+
+Con box-sizing
+    
+            HTML
+    <div class="box">Soy una caja</div>
+
+            CSS
+
+*, *:before, *:after {
+    
+margin: 0;
+padding: 0;
+box-sizing: border-box
+}
+
+.box {
+background-color: green;
+height: 300px;
+width: 100%
+border: 100px solid red;
+
+}
+    
+Resultado: Se mantendran los cambios*/
+
+  font-family: "Mochiy Pop One";
+}
+body {
+  background-image: url("../img/degradee.jpg"); /* Ruta a la imagen */
+
+  /*Algo a resaltar es que si queremos saber si tenemos un problema con la ubicacion de archivos coloquemos algun color, si se muestra color #000  pero no la imagen es problema de ubicacion*/
+
+  /*Posible error: tal vez tengamos en la carpeta "img" nuestra imagen de fondo, pero no olvidemos que el sistema buscara esa carpeta primero en donde hayamos guardado el estilo.css en este caso es css/estilo.css" asi que tendremos que mover la carpeta imagenes a css*/
+
+  background-size: cover;
+
+  /* Si te das de cuenta se repetia demasiado la imagen de fondo para llenar el body (contenedor) cuando usamos esta funcion ya no se repite mas sino que lo cubre todo es como hacer de cuenta que tenemos como imagen de fondo un cuadrado y queremos meterla toda en un triangulo lo que va a hacer esta funcion es recortar las partes del cuadrado para que se ajuste al tamaño del contenedor y no se salga del triangulo */
+
+  background-attachment: fixed; /* Hace que la imagen de fondo quede fija para que en el momento que el usuario se desplace lo que se desplace sea el contenido sobre la el fondo, no que el fondo y el contenido se desplacen */
+
+  margin: 0; /* ya no hay ninguna margen (sangria) */
+}
+
+h1 {
+  width: fit-content;
+  background-color: #fff;
+  margin: 40px auto; /* "auto" centra el elemento luego de darle el margen*/
+  border-radius: 60px;
+  box-shadow: 5px 5px 0 #000; /* basicamente el primer "5px" controla la sombra hacia el lado derecho y el otro "5px" lo controla hacia abajo */
+  padding: 30px 30px; /*la funcion padding define el espacio del contenido con el del borde el primer "30 px" define el espacio de la parte superior e inferior del contenido y el segundo "30px" el del izquierdo y derecho*/
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000; /*cambiar color del fondo*/
+  font-size: 12px;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+/*Pantalla-inicio */
+#pantalla-inicial {
+  display: block;
+
+  /* Hace que cada div ocupe "TODO EL ANCHO DE LA PAGINA" y que se muestre en una linea nueva, separandose de los otros elementos, es como si cada div tuviera una fila especifica ejemplo:
+
+    <style>
+  .block-element {
+    display: block;
+    background-color: lightblue;
+    margin-bottom: 10px;
+  }
+</style>
+
+<div class="block-element">Bloque 1</div>
+<div class="block-element">Bloque 2</div>
+<div class="block-element">Bloque 3</div>
+
+*/
+
+  text-align: center;
+  font-size: 30px;
+}
+
+#pantalla-inicial {
+  margin: 50px 0; /* recordemos que el "0" agrega pixeles de izquierda a derecha en este caso no importa cuanto le aumentemos no pasara nada porque el 50px si podemos ver como se desplaza porque tiene varios elementos arriba y abajo por lo que esta centrado en el pero no hay elementos a la izquierda y derecha*/
+}
+
+.btn {
+  border: none; /*elimina el borde del elemento*/
+  background: #580078;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+
+  /*cuando el cursor del mouse pasa se posiciona en el boton "comenzar a jugar" cambiara su forma de flecha a una "MANOOO" esto es para indicar que es un boton con alguna funcionalidad*/
+
+  transition: 0.5s; /* hay que esperar una duracion de 0,5sg cuando se le pone el cursor al boton "comenzar juego" para jugar */
+}
+
+.btn:hover {
+  /*usamos hover para aplicar estilos cuando se apunta el cursor a un elemento*/
+
+  transform: scale(1.1); /*aumenta el tamaño un 10%*/
+  /* si el primer de la escala es "1" significa que el tamaño no se altera si mantenemos el primer digito como "1" si el siguiente digito es "1" aumentara el tamaño al 10% y asi sucesivamente
+
+    1:1 ( se aumentara un 10 porciento del tamaño original)
+    1:2 ( se aumentara un 20 porciento del tamaño original)
+    1:3 (se aumentara un 30 porciento del tamaño original)
+
+    Si deseamos reducir el tamaño ahora el primer elemento tendra que ser "0" 
+
+   scale(0.9): Reduce el tamaño del elemento al 90% de su tamaño original, es decir, se reduce en un 10%. 
+
+scale(0.8): Reduce el tamaño del elemento al 80% de su tamaño original, es decir, se reduce en un 20%. 
+
+AQUI VA QUITANDO DE 10 A 10 */
+}
+
+/*Pantalla-juego */
+#pantalla-juego {
+  display: none; /*si colocas display: none se ocultara el contenido de la pantalla-juego cuando quieras ver como va la pagina*/
+}
+
+.pantalla-juego {
+  max-width: 800px; /* maximo espacio que puede ocupar pantalla juego*/
+
+  margin: 50px auto;
+  text-align: center;
+}
+
+.pantalla-juego img {
+  max-width: 400px; /*maximo espacio que puede ocupar la imagen*/
+  width: 100%; /*Que se vea con toda su anchura*/
+}
+
+.opciones {
+  max-width: 400px;
+  margin: auto;
+}
+
+.opcion {
+  display: flex; /* alinea todos los elementos hijos de la clase "opciones" en una sola fila para poder organizarlos mejor y para estructurar secuencias logicas que los incluya a todos*/
+
+  position: relative;
+  align-items: center;
+  max-width: 400px;
+  margin: 30px auto;
+  cursor: pointer;
+}
+
+.opcion .letra {
+  background-color: #151116;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #8c0808;
+  text-align: center;
+  border-radius: 60%;
+  line-height: 35px;
+  border: 5px solid #fff;
+  position: relative;
+}
+
+.opcion .nombre {
+  background: #fff;
+  width: 95%; /* que tan ancho quieres el background*/
+  font-size: 25px;
+  position: absolute; /* position absolute es como colocar una pegatina en cualquier parte del documento, un objeto flotante que no daña las funcionalidades de los demas*/
+  margin-left: 20px;
+  z-index: -2; /* z-index determina la profundidad del elemento cuando sobreponemos dos elementos en este caso "letras" y "nombre" cuando colocamos que nombre es -2 ponemos este elemento mas abajo para que se pueda visualizar "letras"*/
+  border-radius: 0px 20px 20px 0;
+  padding: 0px 0 14px 0px;
+}
+
+/*clases que se aplicaran cuando haya acertado en en la opcion elegida*/
+
+.opcion .nombreAcertada {
+  background-color: yellowgreen;
+  color: #fff;
+}
+
+.opcion .letraAcertada {
+  background-color: yellowgreen;
+  color: #fff;
+}
+
+/*clases que se aplicaran cuando se equivoque en la opcion elegida */
+
+.opcion .nombreNoAcertada {
+  background-color: darkred;
+  color: #fff;
+}
+
+.opcion .letraNoAcertada {
+  background-color: darkred;
+  color: #f5f1f1;
+}
+
+/*Pantalla-final */
+#pantalla-final {
+  display: none;
+  text-align: center;
+}
+
+#pantalla-final #numCorrectas {
+  /*para llamar "id" usamos el numeral*/
+  background-color: chartreuse;
+  display: inline-block; /* agarra todos los elementos que coloquemos en un solo bloque*/
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid #0e0606;
+}
+
+#pantalla-final #numIncorrectas {
+  background-color: darkred;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid #0e0202;
+}
+
+#selectPosicion {
+  position: absolute;
+  top: 10px; /* Distancia desde la parte superior de la página */
+  left: 10px; /* Distancia desde el borde izquierdo de la página */
+  padding: 5px; /* Espacio interno dentro del menú desplegable */
+  font-size: 16px; /* Tamaño del texto en el menú desplegable */
+}

@@ -1,0 +1,21 @@
+# rutas_admin.py
+
+from flask import Blueprint, render_template, redirect, url_for, session
+
+# Crear el Blueprint para el administrador
+admin_bp = Blueprint('admin_bp', __name__)
+
+# Ruta para mostrar el panel de administración
+@admin_bp.route('/admin_dashboard')
+def panel():
+    # Verificar si el administrador está autenticado
+    if 'admin' not in session:
+        return redirect(url_for('admin_bp.login'))  # Redirigir al login si no está autenticado
+    return render_template('adminterfaz.html')  # Mostrar la interfaz del administrador
+
+# Ruta para cerrar sesión del administrador
+@admin_bp.route('/logout')
+def logout():
+    session.pop('admin', None)  # Eliminar la sesión del administrador
+    return redirect(url_for('admin_bp.login'))  # Redirigir al login
+

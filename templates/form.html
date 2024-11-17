@@ -54,6 +54,17 @@
             </label>
             <div class="alertaError" id="userPasswordError" style="display:none;"></div>
           </div>
+
+          <label class="checkbox-label" style="display: inline-block; font-size: 14px;">
+            <input type="checkbox" name="isAdmin" id="isAdmin" style="margin-right: 5px;">
+            Registrar como Administrador
+          </label>
+
+
+          <!-- Mensaje dinámico -->
+          <div id="adminMessage" style="display:none; color: #ff0000; margin-top: 10px;">
+            Regístrate según las instrucciones que recibiste.
+          </div>
           <input type="submit" value="Registrarse">
           <!-- Aquí se mostrará el mensaje de éxito o error global -->
           <div id="globalMessageRegister" style="display:none;"></div> <!-- Para el registro -->
@@ -95,6 +106,12 @@
             <div class="alertaError" id="userPasswordError" style="display:none;"></div>
             <!-- Error mensaje para contraseña -->
           </div>
+
+          <label class="checkbox-label" style="display: inline-block; font-size: 14px;">
+            <input type="checkbox" name="isAdminLogin" id="isAdminLogin">
+            Iniciar sesión como Administrador
+          </label>
+
           <input type="submit" value="Iniciar Sesión">
           <div id="globalMessageLogin" style="display:none;"></div> <!-- Para mostrar mensajes globales del login -->
         </form>

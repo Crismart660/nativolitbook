@@ -1,3 +1,4 @@
+const checkboxAdmin = document.querySelector("#isAdmin"); // Checkbox de administrador
 const formRegister = document.querySelector(".form-register");
 const inputUser = document.querySelector(
   '.form-register input[name="userName"]'
@@ -29,16 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
     validarCampo(
       userNameRegex,
       inputUser,
-      "El nombre de usuario debe tener entre 4 y 16 caracteres, y solo puede contener letras, números, guiones bajos y guiones."
+      "El nombre de usuario debe tener entre 4 y 16 caracteres."
     );
   });
 
   inputEmail.addEventListener("input", () => {
-    validarCampo(
-      emailRegex,
-      inputEmail,
-      "El correo electrónico debe contener @gmail.com."
-    );
+    validarCorreoAdmin(inputEmail); // Usamos la nueva función para validar el correo
   });
 
   inputPass.addEventListener("input", () => {
@@ -49,6 +46,43 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
 });
+
+// Función para validar el campo de correo electrónico
+function validarCorreoAdmin(inputEmail) {
+  const emailValue = inputEmail.value;
+  const esAdmin = checkboxAdmin.checked;
+  const errorDiv = document.querySelector("#userEmailError");
+
+  // Si el checkbox está marcado como "Administrador"
+  if (esAdmin) {
+    // Verificar que el correo tiene el dominio adecuado
+    const adminEmailRegex = /^[a-zA-Z0-9_.+-]+@nativolitbook\.com$/;
+
+    if (emailValue !== "" && adminEmailRegex.test(emailValue)) {
+      errorDiv.style.display = "none"; // Ocultar el mensaje de error
+      estadoValidacionCampos.userEmail = true;
+      inputEmail.parentElement.classList.remove("error");
+    } else {
+      errorDiv.textContent = "Registrate como se te fue indicado."; // Mostrar mensaje para correo administrador
+      errorDiv.style.display = "block";
+      estadoValidacionCampos.userEmail = false;
+      inputEmail.parentElement.classList.add("error");
+    }
+  } else {
+    // Validar el correo electrónico estándar si no es administrador
+    if (emailRegex.test(emailValue)) {
+      errorDiv.style.display = "none"; // Ocultar el mensaje de error
+      estadoValidacionCampos.userEmail = true;
+      inputEmail.parentElement.classList.remove("error");
+    } else {
+      errorDiv.textContent =
+        "El correo electrónico debe tener un formato válido."; // Mensaje de error para usuarios
+      errorDiv.style.display = "block";
+      estadoValidacionCampos.userEmail = false;
+      inputEmail.parentElement.classList.add("error");
+    }
+  }
+}
 
 function validarCampo(regularExpresion, campo, mensaje) {
   const esValido = regularExpresion.test(campo.value);
@@ -67,7 +101,7 @@ function validarCampo(regularExpresion, campo, mensaje) {
 }
 
 function enviarFormulario(form) {
-  const globalMessage = document.querySelector("#globalMessageRegister"); // Cambio aquí
+  const globalMessage = document.querySelector("#globalMessageRegister");
 
   if (
     estadoValidacionCampos.userName &&
